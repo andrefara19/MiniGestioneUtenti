@@ -125,7 +125,7 @@
 
 }
 
-@media (max-width: 490px) {
+@media (max-width: 360px) {
 
     .header .logo {
         display: grid;
@@ -140,18 +140,4 @@
         float: none;
     }
 
-}
-
-@media (max-width: 420px) {
-
-    .header .menu li a {
-        font-size: medium;
-    }
-}
-
-@media (max-width: 340px) {
-
-    .header .menu li a {
-        font-size: small;
-    }
 }
