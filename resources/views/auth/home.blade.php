@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Area personale - {{ $nome }} {{ $cognome }}</title>
+    <title>{{ $nome }} {{ $cognome }}</title>
 </head>
 <body>
     <h1>Benvenuto nella tua area personale, {{ $nome }} {{ $cognome }}</h1>
