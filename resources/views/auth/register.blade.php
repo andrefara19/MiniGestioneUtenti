@@ -8,6 +8,17 @@
     <link href="{{ asset('css/header.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/form.css') }}" rel="stylesheet">
+    <script>
+        function validatePassword() {
+            var password = document.getElementById("password");
+            var confirm_password = document.getElementById("password_confirmation");
+            if (password.value !== confirm_password.value) {
+                confirm_password.setCustomValidity("Le password non coincidono");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+    </script>
 </head>
 
 <body class="body">
@@ -55,18 +66,6 @@
             <p><span class="asterisk">*</span> Campi obbligatori</p>
         </form>
     </main>
-    <script>
-        function checkPasswordMatch() {
-            const password = document.getElementById("password");
-            const confirmPassword = document.getElementById("confirmPassword");
-
-            if (password.value !== confirmPassword.value) {
-                confirmPassword.setCustomValidity("Le password non coincidono.");
-            } else {
-                confirmPassword.setCustomValidity("");
-            }
-        }
-    </script>
 </body>
 
 </html>

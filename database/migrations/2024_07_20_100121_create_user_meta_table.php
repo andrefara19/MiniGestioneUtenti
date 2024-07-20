@@ -13,10 +13,10 @@ class CreateUserMetaTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('nome');
             $table->string('cognome');
-            $table->string('indirizzo');
-            $table->string('cap');
-            $table->string('citta');
-            $table->string('provincia');
+            $table->string('indirizzo')->nullable();
+            $table->string('cap')->nullable();
+            $table->string('citta')->nullable();
+            $table->string('provincia')->nullable();
             $table->unsignedBigInteger('nazione_id');
             $table->timestamps();
 
