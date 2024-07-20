@@ -8,6 +8,7 @@
     <link href="{{ asset('css/header.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/form.css') }}" rel="stylesheet">
+
     <script>
         function validatePassword() {
             var password = document.getElementById("password");
@@ -64,6 +65,20 @@
             <input type="reset" value="Resetta">
             <br><br>
             <p><span class="asterisk">*</span> Campi obbligatori</p>
+            @if (session('success'))
+                <div class="success-message">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if ($errors->any())
+                <div>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </form>
     </main>
 </body>

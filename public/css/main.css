@@ -18,3 +18,11 @@ body {
     height: fit-content;
 
 }
+
+.success-message {
+    color: green;
+    border: 1px solid green;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #dff0d8;
+}

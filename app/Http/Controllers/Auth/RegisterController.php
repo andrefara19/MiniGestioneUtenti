@@ -52,6 +52,6 @@ class RegisterController extends Controller
             'nazione_id' => $request->nazione_id,
         ]);
 
-        return redirect()->route('login')->with('success', 'Registrazione avvenuta con successo!');
+        return redirect()->route('register')->with('success', 'Registrazione avvenuta con successo!');
     }
 }
