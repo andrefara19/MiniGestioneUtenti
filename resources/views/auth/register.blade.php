@@ -8,11 +8,10 @@
     <link href="{{ asset('css/header.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/form.css') }}" rel="stylesheet">
-
     <script>
         function validatePassword() {
             var password = document.getElementById("password");
-            var confirm_password = document.getElementById("password_confirmation");
+            var confirm_password = document.getElementById("confirmPassword");
             if (password.value !== confirm_password.value) {
                 confirm_password.setCustomValidity("Le password non coincidono");
             } else {
@@ -59,28 +58,29 @@
             <br><br>
             <span class="asterisk">*</span> <input id="password" type="password" name="password" placeholder="Password" required minlength="8">
             <br><br>
-            <span class="asterisk">*</span> <input id="confirmPassword" type="password" name="password_confirmation" placeholder="Conferma Password" required oninput="checkPasswordMatch()">
+            <span class="asterisk">*</span> <input id="confirmPassword" type="password" name="password_confirmation" placeholder="Conferma Password" required oninput="validatePassword()">
             <br><br>
             <button type="submit">Registrati</button>
             <input type="reset" value="Resetta">
             <br><br>
             <p><span class="asterisk">*</span> Campi obbligatori</p>
-            @if (session('success'))
-                <div class="success-message">
-                    {{ session('success') }}
-                </div>
-            @endif
-            @if ($errors->any())
-                <div>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
         </form>
+        @if (session('success'))
+            <div class="success-message">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if ($errors->any())
+            <div>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </main>
 </body>
 
 </html>
+

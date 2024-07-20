@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\HomeController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('registrati', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('registrati', [RegisterController::class, 'register']);
