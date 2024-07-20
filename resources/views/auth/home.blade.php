@@ -23,9 +23,9 @@
     <main class="main">
         <h1>Benvenuto nella tua area personale, {{ $nome }}!</h1>
         <form action="{{ route('logout') }}" method="POST">
-            @csrf
+             @csrf
             <button type="submit">Logout</button>
         </form>
-    </main>
+    </main> 
 </body>
 </html>
