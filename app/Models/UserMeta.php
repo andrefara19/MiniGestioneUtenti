@@ -11,6 +11,8 @@ class UserMeta extends Model
 
     protected $fillable = ['user_id', 'nome', 'cognome', 'indirizzo', 'cap', 'citta', 'provincia', 'nazione_id'];
 
+    protected $table = 'user_meta';  // Assicurati che il nome della tabella sia corretto
+
     public function user()
     {
         return $this->belongsTo(User::class);
