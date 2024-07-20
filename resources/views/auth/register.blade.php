@@ -18,8 +18,8 @@
             <span class="menu-icon"></span>
         </label>
         <ul class="menu">
-        <li><a href="{{ url('/registrati/') }}">REGISTRATI</a></li>
-        <li><a href="{{ url('/login/') }}">LOGIN</a></li>
+            <li><a href="{{ url('/registrati/') }}">REGISTRATI</a></li>
+            <li><a href="{{ url('/login/') }}">LOGIN</a></li>
         </ul>
     </header>
     <main class="main">
@@ -45,18 +45,28 @@
             <br><br>
             <span class="asterisk">*</span> <input type="email" name="email" placeholder="Email" required>
             <br><br>
-            <span class="asterisk">*</span> <input type="password" name="password" placeholder="Password" required minlength="8">
+            <span class="asterisk">*</span> <input id="password" type="password" name="password" placeholder="Password" required minlength="8">
             <br><br>
-            <span class="asterisk">*</span> <input type="password" name="password_confirmation" placeholder="Conferma Password" required>
+            <span class="asterisk">*</span> <input id="confirmPassword" type="password" name="password_confirmation" placeholder="Conferma Password" required oninput="checkPasswordMatch()">
             <br><br>
             <button type="submit">Registrati</button>
             <input type="reset" value="Resetta">
             <br><br>
             <p><span class="asterisk">*</span> Campi obbligatori</p>
-            
-
         </form>
     </main>
+    <script>
+        function checkPasswordMatch() {
+            const password = document.getElementById("password");
+            const confirmPassword = document.getElementById("confirmPassword");
+
+            if (password.value !== confirmPassword.value) {
+                confirmPassword.setCustomValidity("Le password non coincidono.");
+            } else {
+                confirmPassword.setCustomValidity("");
+            }
+        }
+    </script>
 </body>
 
 </html>
