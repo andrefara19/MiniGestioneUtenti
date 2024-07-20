@@ -9,17 +9,19 @@ class CountriesTableSeeder extends Seeder
 {
     public function run()
     {
+        $timestamp = Carbon::now();
         $countries = [
-            ['name' => 'Altro paese UE'],
-            ['name' => 'Altro paese del mondo'],
-            ['name' => 'Austria'],
-            ['name' => 'Francia'],
-            ['name' => 'Germania'],
-            ['name' => 'Inghilterra'],
-            ['name' => 'Olanda'],
-            ['name' => 'Portogallo'],
-            ['name' => 'Spagna'],
-            ['name' => 'Svizzera'],    
+            ['name' => 'Italia', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['name' => 'Austria', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['name' => 'Francia', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['name' => 'Germania', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['name' => 'Inghilterra', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['name' => 'Olanda', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['name' => 'Portogallo', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['name' => 'Spagna', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['name' => 'Svizzera', 'created_at' => $timestamp, 'updated_at' => $timestamp],  
+            ['name' => 'UE', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['name' => 'WORLD', 'created_at' => $timestamp, 'updated_at' => $timestamp],  
         ];
 
         DB::table('countries')->insert($countries);
