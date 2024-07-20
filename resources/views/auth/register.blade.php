@@ -45,7 +45,7 @@
             <br><br>
             <span class="asterisk">*</span> <input type="email" name="email" placeholder="Email" required>
             <br><br>
-            <span class="asterisk">*</span> <input type="password" name="password" placeholder="Password" required>
+            <span class="asterisk">*</span> <input type="password" name="password" placeholder="Password" required minlength="8">
             <br><br>
             <span class="asterisk">*</span> <input type="password" name="password_confirmation" placeholder="Conferma Password" required>
             <br><br>
