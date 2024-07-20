@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home - {{ $nome }} {{ $cognome }}</title>
+    <title>Area personale - {{ $nome }} {{ $cognome }}</title>
 </head>
 <body>
     <h1>Benvenuto nella tua area personale, {{ $nome }} {{ $cognome }}</h1>
