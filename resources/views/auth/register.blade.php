@@ -25,31 +25,36 @@
     <main class="main">
         <form action="{{ route('register') }}" method="POST">
             @csrf
-            <input type="text" name="nome" placeholder="Nome" required>
+            <span class="asterisk">*</span> <input type="text" name="nome" placeholder="Nome" required>
             <br><br>
-            <input type="text" name="cognome" placeholder="Cognome" required>
+            <span class="asterisk">*</span> <input type="text" name="cognome" placeholder="Cognome" required>
             <br><br>
-            <input type="text" name="indirizzo" placeholder="Indirizzo" required>
+            <input type="text" name="indirizzo" placeholder="Indirizzo">
             <br><br>
-            <input type="text" name="cap" placeholder="CAP" required>
+            <input type="text" name="cap" placeholder="CAP">
             <br><br>
-            <input type="text" name="citta" placeholder="Città" required>
+            <input type="text" name="citta" placeholder="Città">
             <br><br>
-            <input type="text" name="provincia" placeholder="Provincia" required>
+            <input type="text" name="provincia" placeholder="Provincia">
             <br><br>
-            <span>Nazione </span><select name="nazione_id" required>
+            <span class="asterisk">*</span> <span>Nazione </span><select name="nazione_id" required>
                 @foreach($countries as $country)
                     <option value="{{ $country->id }}">{{ $country->name }}</option>
                 @endforeach
             </select>
             <br><br>
-            <input type="email" name="email" placeholder="Email" required>
+            <span class="asterisk">*</span> <input type="email" name="email" placeholder="Email" required>
             <br><br>
-            <input type="password" name="password" placeholder="Password" required>
+            <span class="asterisk">*</span> <input type="password" name="password" placeholder="Password" required>
             <br><br>
-            <input type="password" name="password_confirmation" placeholder="Conferma Password" required>
+            <span class="asterisk">*</span> <input type="password" name="password_confirmation" placeholder="Conferma Password" required>
             <br><br>
             <button type="submit">Registrati</button>
+            <input type="reset" value="Resetta">
+            <br><br>
+            <p><span class="asterisk">*</span> Campi obbligatori</p>
+            
+
         </form>
     </main>
 </body>
