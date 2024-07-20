@@ -9,16 +9,20 @@ class UserMeta extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'nome', 'cognome', 'indirizzo', 'cap', 'citta', 'provincia', 'nazione_id'];
-
     protected $table = 'user_meta'; 
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    protected $fillable = [
+        'user_id',
+        'nome',
+        'cognome',
+        'indirizzo',
+        'cap',
+        'citta',
+        'provincia',
+        'nazione_id',
+    ];
 
-    public function nazione()
+    public function country()
     {
         return $this->belongsTo(Country::class, 'nazione_id');
     }
