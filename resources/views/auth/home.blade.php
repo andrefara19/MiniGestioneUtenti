@@ -16,16 +16,20 @@
             <span class="menu-icon"></span>
         </label>
         <ul class="menu">
-            <li><a href="{{ url('/registrati/') }}">REGISTRATI</a></li>
-            <li><a href="{{ url('/login/') }}">LOGIN</a></li>
+            @guest
+                <li><a href="{{ url('/registrati/') }}">REGISTRATI</a></li>
+                <li><a href="{{ url('/login/') }}">LOGIN</a></li>
+            @else
+                <li><a href="{{ url('/profilo/') }}">PROFILO</a></li>
+                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LOGOUT</a></li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            @endguest
         </ul>
     </header>
     <main class="main">
         <h1>Benvenuto nella tua area personale, {{ $nome }}!</h1>
-        <form action="{{ route('logout') }}" method="POST">
-             @csrf
-            <button type="submit">Logout</button>
-        </form>
     </main> 
 </body>
 </html>
