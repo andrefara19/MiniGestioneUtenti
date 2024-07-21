@@ -16,5 +16,6 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::get('/area_personale', [HomeController::class, 'index'])->name('home');
-    Route::get('/profilo', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/profilo', [ProfileController::class, 'index'])->name('profile.index');
+    Route::put('/profilo', [ProfileController::class, 'update'])->name('profile.update');
 });
