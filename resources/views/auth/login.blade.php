@@ -30,13 +30,13 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('login') }}" method="POST">
+        <form class="login_form" action="{{ route('login') }}" method="POST">
             @csrf
-            <input type="email" name="email" placeholder="Email" required value="{{ old('email') }}">
+            <input class="campo_email" type="email" name="email" placeholder="Email" required value="{{ old('email') }}">
             <br><br>
-            <input type="password" name="password" placeholder="Password" required minlength="8">
+            <input class="campo_password" type="password" name="password" placeholder="Password" required minlength="8">
             <br><br>
-            <button type="submit">Login</button>
+            <button class="login_button" type="submit">Login</button>
         </form>
     </main>
 </body>

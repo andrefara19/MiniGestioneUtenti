@@ -45,17 +45,17 @@ input {
     height: 30px;
     width: 250px;
     position: relative;
-    margin-left: 8px;
+    margin-left: 2px;
     margin-bottom: 10px;
 }
 
 .no_asterisk {
-    margin-left: 37px;
+    margin-left: 31px;
 }
 
 select {
     height: 34px;
-    margin-left: 12px;
+    margin-left: 6px;
     width: 258px;
     position: relative;
     margin-bottom: 10px;
@@ -68,12 +68,35 @@ select {
     padding-right: 45px;
     border-radius: 2%;
     width: 310px;
-    height: 750px;
     margin-top: 20px;
 }
 
+.login_form {
+    background-color: gainsboro;
+    padding: 30px 45px 0px 35px;
+    padding-top: 40px;
+    padding-right: 45px;
+    border-radius: 2%;
+    width: 310px;
+    margin-top: 20px;
+}
+
+.login_form {
+    height: 218px;
+}
+
+.register_form {
+    height: 750px;
+}
+
+.campo_email,
+.campo_password {
+    margin-left: 32px;
+}
+
 .register_button,
-.reset_button {
+.reset_button,
+.login_button {
     border: ridge black;
     background-color: lightgreen;
     position: relative;
@@ -86,12 +109,17 @@ select {
 
 .register_button {
     background-color: #7ae6ff;
-    margin-left: 38px;
+    margin-left: 32px;
 }
 
 .reset_button {
     background-color: #cbf5ff;
-    margin-left: 32px;
+    margin-left: 34px;
+}
+
+.login_button {
+    background-color: #7ae6ff;
+    margin-left: 105px;
 }
 
 .campi_obbligatori {

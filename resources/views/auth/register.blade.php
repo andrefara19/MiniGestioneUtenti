@@ -34,7 +34,6 @@
         </ul>
     </header>
     <main class="main">
-        <div class="register_form_container">
         <form class="register_form" action="{{ route('register') }}" method="POST">
             @csrf
             <span class="asterisk">*</span> <input type="text" name="nome" placeholder="Nome" required>
@@ -78,11 +77,9 @@
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
-            </div>
-        </div>    
+            </div>  
         @endif
     </main>
 </body>
-
 </html>
 
