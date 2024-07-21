@@ -20,4 +20,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profilo', [ProfileController::class, 'index'])->name('profile.index');
     Route::put('/profilo', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/utente/{id}', [UserController::class, 'show'])->name('user.profile');
+    Route::put('/utente/{id}', [UserController::class, 'update'])->name('user.update'); 
+    Route::delete('/utente/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 });

@@ -39,6 +39,34 @@
             <li>Provincia: {{ $provincia }}</li>
             <li>Nazione: {{ $nazione }}</li>
         </ul>
+        @if ($isAdmin)
+            <h1>Vuoi modificare i dati di {{ $nome }} {{ $cognome }}?</h1>
+            <form action="{{ route('user.update', $user->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <ul>
+                    <li>Nome: <input type="text" name="nome" value="{{ $nome }}"></li>
+                    <li>Cognome: <input type="text" name="cognome" value="{{ $cognome }}"></li>
+                    <li>Indirizzo: <input type="text" name="indirizzo" value="{{ $indirizzo }}"></li>
+                    <li>CAP: <input type="text" name="cap" value="{{ $cap }}"></li>
+                    <li>Città: <input type="text" name="citta" value="{{ $citta }}"></li>
+                    <li>Provincia: <input type="text" name="provincia" value="{{ $provincia }}"></li>
+                    <li>Nazione: 
+                        <select name="nazione_id">
+                            @foreach($countries as $country)
+                                <option value="{{ $country->id }}" {{ $country->id == $nazione_id ? 'selected' : '' }}>{{ $country->name }}</option>
+                            @endforeach
+                        </select>
+                    </li>
+                </ul>
+                <button type="submit">Modifica Profilo</button>
+            </form>
+            <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="margin-top: 20px;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" onclick="return confirm('Sei sicuro di voler eliminare questo utente?')">Elimina Utente</button>
+            </form>
+        @endif
     </main>
 </body>
 </html>
