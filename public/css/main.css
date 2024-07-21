@@ -77,7 +77,6 @@ select {
     border: ridge black;
     background-color: lightgreen;
     position: relative;
-    margin-left: 34px;
     margin-top: 10px;
     border-radius: 30%;
     height: 50px;
@@ -87,10 +86,12 @@ select {
 
 .register_button {
     background-color: #7ae6ff;
+    margin-left: 38px;
 }
 
 .reset_button {
     background-color: #cbf5ff;
+    margin-left: 32px;
 }
 
 .campi_obbligatori {
