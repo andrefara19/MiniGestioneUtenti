@@ -29,7 +29,7 @@
         </ul>
     </header>
     <main class="main">
-        <h1>Benvenuto nella tua area personale, {{ $nome }}!</h1>
+        <h1>Welcome! Questa è la tua area personale, {{ $nome }}!</h1>
     </main> 
 </body>
 </html>
