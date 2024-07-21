@@ -60,6 +60,20 @@
             </ul>
             <button type="submit">Aggiorna Profilo</button>
         </form>
+        @if (session('success'))
+            <div class="success-message">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if ($errors->any())
+            <div>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </main>
 </body>
 </html>
