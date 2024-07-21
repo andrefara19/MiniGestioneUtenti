@@ -30,6 +30,16 @@
     </header>
     <main class="main">
         <h1>Welcome! Questa è la tua area personale, {{ $nome }}!</h1>
+        <h2>Elenco degli utenti:</h2>
+        <ul>
+            @foreach($users as $user)
+                <li>
+                    <a href="{{ route('user.profile', $user->id) }}">
+                        {{ $user->userMeta->nome }} {{ $user->userMeta->cognome }}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
     </main> 
 </body>
 </html>
