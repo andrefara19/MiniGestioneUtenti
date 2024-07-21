@@ -7,6 +7,8 @@ body {
     font-family: "Roboto", sans-serif;
     text-shadow: 1px 1px 1px rgb(13, 16, 43);
     background-color: rgb(40, 47, 118);
+    display: flex;
+    justify-content: center;
 }
 
 .main {
@@ -29,4 +31,70 @@ body {
 
 .lista_utenti li a {
     color: silver;
+}
+
+input,
+select {
+
+    border: ridge black;
+    border-radius: 2%;
+    background-color: lightsteelblue;
+}
+
+input {
+    height: 30px;
+    width: 250px;
+    position: relative;
+    margin-left: 8px;
+    margin-bottom: 10px;
+}
+
+.no_asterisk {
+    margin-left: 37px;
+}
+
+select {
+    height: 34px;
+    margin-left: 12px;
+    width: 258px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.register_form {
+    background-color: gainsboro;
+    padding: 30px 45px 0px 35px;
+    padding-top: 40px;
+    padding-right: 45px;
+    border-radius: 2%;
+    width: 310px;
+    height: 750px;
+    margin-top: 20px;
+}
+
+.register_button,
+.reset_button {
+    border: ridge black;
+    background-color: lightgreen;
+    position: relative;
+    margin-left: 34px;
+    margin-top: 10px;
+    border-radius: 30%;
+    height: 50px;
+    width: 110px;
+    cursor: pointer;
+}
+
+.register_button {
+    background-color: #7ae6ff;
+}
+
+.reset_button {
+    background-color: #cbf5ff;
+}
+
+.campi_obbligatori {
+    font-size: medium;
+    position: absolute;
+    margin-left: 6px;
 }

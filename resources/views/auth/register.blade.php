@@ -34,21 +34,22 @@
         </ul>
     </header>
     <main class="main">
-        <form action="{{ route('register') }}" method="POST">
+        <div class="register_form_container">
+        <form class="register_form" action="{{ route('register') }}" method="POST">
             @csrf
             <span class="asterisk">*</span> <input type="text" name="nome" placeholder="Nome" required>
             <br><br>
             <span class="asterisk">*</span> <input type="text" name="cognome" placeholder="Cognome" required>
             <br><br>
-            <input type="text" name="indirizzo" placeholder="Indirizzo">
+            <input class="no_asterisk" type="text" name="indirizzo" placeholder="Indirizzo">
             <br><br>
-            <input type="text" name="cap" placeholder="CAP">
+            <input class="no_asterisk" type="text" name="cap" placeholder="CAP">
             <br><br>
-            <input type="text" name="citta" placeholder="Città">
+            <input class="no_asterisk" type="text" name="citta" placeholder="Città">
             <br><br>
-            <input type="text" name="provincia" placeholder="Provincia">
+            <input class="no_asterisk" type="text" name="provincia" placeholder="Provincia">
             <br><br>
-            <span class="asterisk">*</span> <span>Nazione </span><select name="nazione_id" required>
+            <span class="asterisk">*</span><select class="nazione" name="nazione_id" required>
                 @foreach($countries as $country)
                     <option value="{{ $country->id }}">{{ $country->name }}</option>
                 @endforeach
@@ -60,10 +61,10 @@
             <br><br>
             <span class="asterisk">*</span> <input id="confirmPassword" type="password" name="password_confirmation" placeholder="Conferma Password" required oninput="validatePassword()">
             <br><br>
-            <button type="submit">Registrati</button>
-            <input type="reset" value="Resetta">
+            <button class= "register_button" type="submit">Registrati</button>
+            <input type="reset" class="reset_button" value="Resetta">
             <br><br>
-            <p><span class="asterisk">*</span> Campi obbligatori</p>
+            <p><span class="asterisk">*</span><span class="campi_obbligatori">Campi obbligatori</span> 
         </form>
         @if (session('success'))
             <div class="success-message">
@@ -78,6 +79,7 @@
                     @endforeach
                 </ul>
             </div>
+        </div>    
         @endif
     </main>
 </body>
