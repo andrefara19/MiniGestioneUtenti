@@ -8,6 +8,10 @@ use App\Http\Controllers\Auth\UserController;
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::get('registrati', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('registrati', [RegisterController::class, 'register']);
 
