@@ -33,11 +33,19 @@
         <h2>Elenco degli utenti:</h2>
         <ul>
             @foreach($users as $user)
-                <li>
-                    <a href="{{ route('user.profile', $user->id) }}">
-                        {{ $user->userMeta->nome }} {{ $user->userMeta->cognome }}
-                    </a>
-                </li>
+                @if ($user->userMeta)
+                    <li>
+                        <a href="{{ route('user.profile', $user->id) }}">
+                            {{ $user->userMeta->nome }} {{ $user->userMeta->cognome }}
+                        </a>
+                    </li>
+                @else
+                    <li>
+                        <a href="#">
+                            Informazioni incomplete per l'utente con email: {{ $user->email }}
+                        </a>
+                    </li>
+                @endif
             @endforeach
         </ul>
     </main> 

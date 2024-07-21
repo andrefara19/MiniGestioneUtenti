@@ -14,7 +14,11 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $userMeta = $user->userMeta;
-        $users = User::with('userMeta')->get();
+        $users = User::with(['userMeta' => function($query) {
+            $query->orderBy('nome')->orderBy('cognome');
+        }])->get()->sortBy(function($user) {
+            return $user->userMeta->nome . ' ' . $user->userMeta->cognome;
+        });
 
         return view('auth.home', [
             'nome' => $userMeta->nome,
