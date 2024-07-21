@@ -31,7 +31,7 @@
     <main class="main">
         <h1>Welcome! Questa è la tua area personale, {{ $nome }}!</h1>
         <h2>Elenco degli utenti:</h2>
-        <ul>
+        <ul class="lista_utenti">
             @foreach($users as $user)
                 @if ($user->userMeta)
                     <li>

@@ -26,3 +26,7 @@ body {
     margin-bottom: 15px;
     background-color: #dff0d8;
 }
+
+.lista_utenti li a {
+    color: silver;
+}
