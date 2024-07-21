@@ -10,9 +10,4 @@ class Country extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
-
-    public function userMetas()
-    {
-        return $this->hasMany(UserMeta::class, 'nazione_id');
-    }
 }
