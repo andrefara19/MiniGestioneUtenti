@@ -8,11 +8,11 @@ body {
     text-shadow: 1px 1px 1px rgb(13, 16, 43);
     background-color: rgb(40, 47, 118);
     display: flex;
-    justify-content: center;
+    justify-content: left;
 }
 
 .main {
-    padding: 100px 20px;
+    padding: 60px 20px;
     color: silver;
     text-align: justify;
     font-family: "Roboto", sans-serif;
@@ -21,6 +21,23 @@ body {
 
 }
 
+h2 {
+    margin-top: 50px;
+}
+
+ul {
+    margin-left: -23px;
+    margin-top: 30px;
+    list-style-type: circle;
+}
+
+li {
+    padding-bottom: 15px;
+    font-size: larger;
+    color: aqua;
+}
+
 .lista_utenti li a {
-    color: silver;
+    color: dodgerblue;
+    text-underline-position: under;
 }
