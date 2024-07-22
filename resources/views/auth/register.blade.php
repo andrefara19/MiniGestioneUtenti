@@ -7,7 +7,6 @@
     <title>Registrati</title>
     <link href="{{ asset('css/header.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/form.css') }}" rel="stylesheet">
     <script>
         function validatePassword() {
             var password = document.getElementById("password");

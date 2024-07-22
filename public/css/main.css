@@ -133,3 +133,10 @@ select {
     position: absolute;
     margin-left: 6px;
 }
+
+.asterisk {
+    font-size: x-large;
+    color: red;
+    position: relative;
+    margin-left: 15px;
+}
