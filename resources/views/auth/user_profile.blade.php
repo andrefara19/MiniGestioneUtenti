@@ -28,7 +28,7 @@
         </ul>
     </header>
     <main class="main">
-        <h1>Profilo di {{ $nome }} {{ $cognome }}</h1>
+        <h2>Profilo di {{ $nome }} {{ $cognome }}</h2>
         <ul>
             <li>Nome: {{ $nome }}</li>
             <li>Cognome: {{ $cognome }}</li>
@@ -39,7 +39,7 @@
             <li>Nazione: {{ $nazione }}</li>
         </ul>
         @if ($isAdmin)
-            <h1>Vuoi modificare i dati di {{ $nome }} {{ $cognome }}?</h1>
+            <h2>Vuoi aggiornare o modificare i dati di {{ $nome }} {{ $cognome }}?</h2>
             <form action="{{ route('user.update', $user->id) }}" method="POST">
                 @csrf
                 @method('PUT')
