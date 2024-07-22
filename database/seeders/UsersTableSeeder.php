@@ -18,7 +18,6 @@ class UsersTableSeeder extends Seeder
                 'created_at' => $timestamp,
                 'updated_at' => $timestamp
             ],
-            // Aggiungi altri utenti se necessario
         ];
 
         DB::table('users')->insert($users);
@@ -36,7 +35,6 @@ class UsersTableSeeder extends Seeder
                 'created_at' => $timestamp,
                 'updated_at' => $timestamp
             ],
-            // Aggiungi altre informazioni utente se necessario
         ];
 
         DB::table('user_meta')->insert($userMetas);
