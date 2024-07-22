@@ -25,6 +25,7 @@ class RegisterController extends Controller
             'email.unique' => 'L\'email è già stata utilizzata!',
             'nome.required' => 'Il nome non può essere vuoto',
             'cognome.required' => 'Il cognome non può essere vuoto',
+            'password.required' => 'La password non è valida',
             'nome.regex' => 'Nel nome sono presenti numeri o caratteri speciali',
             'cognome.regex' => 'Nel cognome sono presenti numeri o caratteri speciali',
             'nome.regex_start' => 'Il nome non può iniziare con spazio',
