@@ -30,13 +30,13 @@
     <main class="main">
         <h2>Profilo di {{ $nome }} {{ $cognome }}</h2>
         <ul>
-            <li>Nome: {{ $nome }}</li>
-            <li>Cognome: {{ $cognome }}</li>
-            <li>Indirizzo: {{ $indirizzo }}</li>
-            <li>CAP: {{ $cap }}</li>
-            <li>Città: {{ $citta }}</li>
-            <li>Provincia: {{ $provincia }}</li>
-            <li>Nazione: {{ $nazione }}</li>
+            <li>Nome: <span class= "info">{{ $nome }}</span></li>
+            <li>Cognome: <span class= "info">{{ $cognome }}</span></li>
+            <li>Indirizzo: <span class= "info">{{ $indirizzo }}</span></li>
+            <li>CAP: <span class= "info">{{ $cap }}</span></li>
+            <li>Città: <span class= "info">{{ $citta }}</span></li>
+            <li>Provincia: <span class= "info">{{ $provincia }}</span></li>
+            <li>Nazione: <span class= "info">{{ $nazione }}</span></li>
         </ul>
         @if ($isAdmin)
             <h2>Vuoi aggiornare o modificare i dati di {{ $nome }} {{ $cognome }}?</h2>
