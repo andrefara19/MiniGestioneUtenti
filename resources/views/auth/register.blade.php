@@ -18,6 +18,13 @@
                 confirm_password.setCustomValidity('');
             }
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if ({{ session('success') ? 'true' : 'false' }}) {
+                var buttonsDiv = document.getElementById('form-buttons');
+                buttonsDiv.innerHTML = '<div class="success-message">{{ session('success') }}</div>';
+            }
+        });
     </script>
 </head>
 
@@ -34,6 +41,15 @@
         </ul>
     </header>
     <main class="main">
+        @if ($errors->any())
+            <div>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form class="register_form" action="{{ route('register') }}" method="POST">
             @csrf
             <span class="asterisk">*</span> <input type="text" name="nome" placeholder="Nome" required>
@@ -56,30 +72,18 @@
             <br><br>
             <span class="asterisk">*</span> <input type="email" name="email" placeholder="Email" required>
             <br><br>
-            <span class="asterisk">*</span> <input id="password" type="password" name="password" placeholder="Password" required minlength="8">
+            <span class="asterisk">*</span> <input id="password" type="password" name="password" placeholder="Password" required minlength="8" oninput="validatePassword()">
             <br><br>
             <span class="asterisk">*</span> <input id="confirmPassword" type="password" name="password_confirmation" placeholder="Conferma Password" required oninput="validatePassword()">
             <br><br>
-            <button class= "register_button" type="submit">Registrati</button>
-            <input type="reset" class="reset_button" value="Resetta">
-            <br><br>
-            <p><span class="asterisk">*</span><span class="campi_obbligatori">Campi obbligatori</span> 
-        </form>
-        @if (session('success'))
-            <div class="success-message">
-                {{ session('success') }}
+            <div id="form-buttons">
+                <button class="register_button" type="submit">Registrati</button>
+                <input type="reset" class="reset_button" value="Resetta">
             </div>
-        @endif
-        @if ($errors->any())
-            <div>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>  
-        @endif
+            <br><br>
+            <p><span class="asterisk">*</span><span class="campi_obbligatori">Campi obbligatori</span></p>
+        </form>
     </main>
 </body>
-</html>
 
+</html>

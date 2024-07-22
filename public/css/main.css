@@ -23,10 +23,15 @@ body {
 
 .success-message {
     color: green;
-    border: 1px solid green;
+    border: ridge darkgreen;
+    border-radius: 2%;
+    background-color: lightgreen;
     padding: 10px;
+    padding-left: 17px;
     margin-bottom: 15px;
     background-color: #dff0d8;
+    height: 40px;
+    align-content: center;
 }
 
 .lista_utenti li a {
