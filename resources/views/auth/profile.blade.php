@@ -57,7 +57,7 @@
                     </select>
                 </li>
             </ul>
-            <button type="submit">Aggiorna Profilo</button>
+            <button type="submit">Aggiorna profilo</button>
         </form>
         @if (session('success'))
             <div class="success-message">
