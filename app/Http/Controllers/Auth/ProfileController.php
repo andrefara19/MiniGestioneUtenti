@@ -25,7 +25,7 @@ class ProfileController extends Controller
             'provincia' => $userMeta->provincia,
             'nazione_id' => $userMeta->nazione_id,
             'nazione' => $country ? $country->name : 'N/A',
-            'countries' => $countries, // Passa la lista dei paesi alla vista
+            'countries' => $countries,
         ]);
     }
 

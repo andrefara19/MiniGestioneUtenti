@@ -29,6 +29,11 @@
     </header>
     <main class="main">
         <h2>Profilo di {{ $nome }} {{ $cognome }}</h2>
+        @if (session('success'))
+            <div class="success-message">
+                {{ session('success') }}
+            </div>
+        @endif
         <ul>
             <li>Nome: <span class= "info">{{ $nome }}</span></li>
             <li>Cognome: <span class= "info">{{ $cognome }}</span></li>

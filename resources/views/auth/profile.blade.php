@@ -29,6 +29,11 @@
     </header>
     <main class="main">
         <h2>Il tuo profilo</h2>
+        @if (session('success'))
+            <div class="success-message">
+                {{ session('success') }}
+            </div>
+        @endif
         <ul>
             <li>Nome: <span class= "info">{{ $nome }}</span></li>
             <li>Cognome: <span class= "info">{{ $cognome }}</span></li>
@@ -59,11 +64,6 @@
             </ul>
             <button type="submit">Aggiorna profilo</button>
         </form>
-        @if (session('success'))
-            <div class="success-message">
-                {{ session('success') }}
-            </div>
-        @endif
         @if ($errors->any())
             <div>
                 <ul>
