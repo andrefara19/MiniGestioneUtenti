@@ -22,12 +22,14 @@ body {
 }
 
 .success-message,
-.errore_email {
+.fail-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 2%;
     padding: 10px;
     padding-left: 17px;
     margin-bottom: -12px;
-    background-color: #dff0d8;
     height: 40px;
     align-content: center;
 }
@@ -38,14 +40,11 @@ body {
     background-color: lightgreen;
 }
 
-.errore_email {
-    list-style: none;
+.fail-message {
     color: red;
     border: ridge darkred;
     background-color: black;
-    width: 210px;
-    font-weight: 100;
-    margin-left: 30px;
+    margin-bottom: 40px;
 }
 
 input,

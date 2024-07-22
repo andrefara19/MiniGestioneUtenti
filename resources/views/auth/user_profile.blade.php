@@ -29,6 +29,13 @@
     </header>
     <main class="main">
         <h2>Profilo di {{ $nome }} {{ $cognome }}</h2>
+        @if ($errors->any()) 
+            @foreach ($errors->all() as $error)
+                <div class = "fail-message">
+                    {{ $error }}
+                </div>
+            @endforeach
+        @endif
         @if (session('success'))
             <div class="success-message">
                 {{ session('success') }}
@@ -49,18 +56,18 @@
                 @csrf
                 @method('PUT')
                 <ul>
-                    <li>Nome: <input type="text" name="nome" value="{{ $nome }}"></li>
-                    <li>Cognome: <input type="text" name="cognome" value="{{ $cognome }}"></li>
+                    <li>Nome: <input type="text" name="nome" value="{{ $nome }}" required></li>
+                    <li>Cognome: <input type="text" name="cognome" value="{{ $cognome }}" required></li>
                     <li>Indirizzo: <input type="text" name="indirizzo" value="{{ $indirizzo }}"></li>
                     <li>CAP: <input type="text" name="cap" value="{{ $cap }}"></li>
                     <li>Città: <input type="text" name="citta" value="{{ $citta }}"></li>
                     <li>Provincia: <input type="text" name="provincia" value="{{ $provincia }}"></li>
                     <li>Nazione: 
-                        <select name="nazione_id">
+                        <select name="nazione_id" required>
                             @foreach($countries as $country)
                                 <option value="{{ $country->id }}" {{ $country->id == $nazione_id ? 'selected' : '' }}>{{ $country->name }}</option>
                             @endforeach
-                        </select>
+                        </select> 
                     </li>
                 </ul>
                 <button class="bottone_modifica" type="submit">Modifica Profilo</button>

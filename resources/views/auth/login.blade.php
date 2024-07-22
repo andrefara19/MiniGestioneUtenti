@@ -21,13 +21,11 @@
     </header>
     <main class="main">
         @if ($errors->any())
-            <div>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li class="errore_credenziali">{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+            @foreach ($errors->all() as $error)
+                <div class = "fail-message">
+                    {{ $error }}
+                </div>
+            @endforeach
         @endif
         <form class="login_form" action="{{ route('login') }}" method="POST">
             @csrf

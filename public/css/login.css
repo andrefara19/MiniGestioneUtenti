@@ -80,3 +80,19 @@ input {
     width: 300px;
     font-weight: 100;
 }
+
+.fail-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2%;
+    padding: 10px;
+    padding-left: 15px;
+    margin-bottom: 40px;
+    height: 40px;
+    align-content: center;
+    width: 360px;
+    color: red;
+    border: ridge darkred;
+    background-color: black;
+}

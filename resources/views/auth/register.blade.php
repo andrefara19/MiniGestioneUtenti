@@ -41,11 +41,11 @@
     </header>
     <main class="main">
         @if ($errors->any())
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li class="errore_email">{{ $error }}</li>
-                    @endforeach
-                </ul>
+            @foreach ($errors->all() as $error)
+                <div class = "fail-message">
+                    {{ $error }}
+                </div>
+            @endforeach
         @endif
         <form class="register_form" action="{{ route('register') }}" method="POST">
             @csrf

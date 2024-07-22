@@ -74,15 +74,29 @@ button {
     margin-top: -10px;
 }
 
-.success-message {
+.success-message,
+.fail-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 2%;
     padding: 10px;
     padding-left: 15px;
     margin-bottom: -12px;
     height: 40px;
     align-content: center;
+}
+
+.success-message {
     color: green;
     border: ridge darkgreen;
     background-color: lightgreen;
     width: 250px;
+}
+
+.fail-message {
+    color: red;
+    border: ridge darkred;
+    background-color: black;
+    width: 400px;
 }
