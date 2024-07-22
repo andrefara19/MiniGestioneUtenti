@@ -24,7 +24,7 @@
             <div>
                 <ul>
                     @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                        <li class="errore_credenziali">{{ $error }}</li>
                     @endforeach
                 </ul>
             </div>

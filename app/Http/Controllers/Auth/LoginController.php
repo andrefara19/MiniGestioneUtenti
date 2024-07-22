@@ -28,7 +28,7 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Le credenziali fornite non corrispondono.',
+            'email' => 'Le credenziali fornite non corrispondono!',
         ]);
     }
 

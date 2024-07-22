@@ -65,3 +65,18 @@ input {
     background-color: #7ae6ff;
     margin-left: 105px;
 }
+
+.errore_credenziali {
+    border-radius: 2%;
+    padding: 10px;
+    padding-left: 17px;
+    margin-bottom: -12px;
+    height: 40px;
+    align-content: center;
+    list-style: none;
+    color: red;
+    border: ridge darkred;
+    background-color: black;
+    width: 300px;
+    font-weight: 100;
+}
