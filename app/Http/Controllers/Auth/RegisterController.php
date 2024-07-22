@@ -20,7 +20,11 @@ class RegisterController extends Controller
     }
 
     public function register(Request $request)
-    {
+    {   
+        $messages = [
+            'email.unique' => 'L\'email è già stata utilizzata!',
+        ];
+
         $validator = Validator::make($request->all(), [
             'nome' => 'required|string|max:255',
             'cognome' => 'required|string|max:255',
@@ -31,7 +35,7 @@ class RegisterController extends Controller
             'nazione_id' => 'required|exists:countries,id',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
-        ]);
+        ], $messages);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
