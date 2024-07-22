@@ -43,7 +43,7 @@
             <li>Provincia: <span class= "info">{{ $provincia }}</span></li>
             <li>Nazione: <span class= "info">{{ $nazione }}</span></li>
         </ul>
-        <h2>Vuoi aggiornare o modificare i tuoi dati?</h2>
+        <h2>Vuoi aggiornare i tuoi dati?</h2>
         <form action="{{ route('profile.update') }}" method="POST">
             @csrf
             @method('PUT')

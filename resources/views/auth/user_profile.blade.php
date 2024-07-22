@@ -44,7 +44,7 @@
             <li>Nazione: <span class= "info">{{ $nazione }}</span></li>
         </ul>
         @if ($isAdmin)
-            <h2>Vuoi aggiornare, modificare o eliminare i dati di {{ $nome }} {{ $cognome }}?</h2>
+            <h2>Vuoi aggiornare o eliminare i dati di {{ $nome }} {{ $cognome }}?</h2>
             <form action="{{ route('user.update', $user->id) }}" method="POST">
                 @csrf
                 @method('PUT')
