@@ -28,21 +28,21 @@
         </ul>
     </header>
     <main class="main">
-        <h1>Il tuo profilo</h1>
+        <h2>Il tuo profilo</h2>
         <ul>
-            <li>Nome: {{ $nome }}</li>
-            <li>Cognome: {{ $cognome }}</li>
-            <li>Indirizzo: {{ $indirizzo }}</li>
-            <li>CAP: {{ $cap }}</li>
-            <li>Città: {{ $citta }}</li>
-            <li>Provincia: {{ $provincia }}</li>
-            <li>Nazione: {{ $nazione }}</li>
+            <li>Nome: <span class= "info">{{ $nome }}</span></li>
+            <li>Cognome: <span class= "info">{{ $cognome }}</span></li>
+            <li>Indirizzo: <span class= "info">{{ $indirizzo }}</span></li>
+            <li>CAP: <span class= "info">{{ $cap }}</span></li>
+            <li>Città: <span class= "info">{{ $citta }}</span></li>
+            <li>Provincia: <span class= "info">{{ $provincia }}</span></li>
+            <li>Nazione: <span class= "info">{{ $nazione }}</span></li>
         </ul>
-        <h1>Vuoi aggiornare i tuoi dati?</h1>
+        <h2>Vuoi aggiornare i tuoi dati?</h2>
         <form action="{{ route('profile.update') }}" method="POST">
             @csrf
             @method('PUT')
-            <ul>
+            <ul class="campi_modifica">
                 <li>Nome: <input type="text" name="nome" value="{{ $nome }}"></li>
                 <li>Cognome: <input type="text" name="cognome" value="{{ $cognome }}"></li>
                 <li>Indirizzo: <input type="text" name="indirizzo" value="{{ $indirizzo }}"></li>
