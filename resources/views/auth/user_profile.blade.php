@@ -39,7 +39,7 @@
             <li>Nazione: <span class= "info">{{ $nazione }}</span></li>
         </ul>
         @if ($isAdmin)
-            <h2>Vuoi aggiornare o modificare i dati di {{ $nome }} {{ $cognome }}?</h2>
+            <h2>Vuoi aggiornare, modificare o eliminare i dati di {{ $nome }} {{ $cognome }}?</h2>
             <form action="{{ route('user.update', $user->id) }}" method="POST">
                 @csrf
                 @method('PUT')
@@ -58,12 +58,12 @@
                         </select>
                     </li>
                 </ul>
-                <button type="submit">Modifica Profilo</button>
+                <button class="bottone_modifica" type="submit">Modifica Profilo</button>
             </form>
             <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="margin-top: 20px;">
                 @csrf
                 @method('DELETE')
-                <button type="submit" onclick="return confirm('Sei sicuro di voler eliminare questo utente?')">Elimina Utente</button>
+                <button class="bottone_elimina" type="submit" onclick="return confirm('Sei sicuro di voler eliminare questo utente?')">Elimina Utente</button>
             </form>
         @endif
     </main>
