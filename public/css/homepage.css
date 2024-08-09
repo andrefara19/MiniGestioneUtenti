@@ -1,0 +1,28 @@
+html,
+body {
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    text-shadow: 1px 1px 1px rgb(13, 16, 43);
+    background-color: rgb(40, 47, 118);
+    display: flex;
+    justify-content: left;
+}
+
+.main {
+    padding: 60px 20px;
+    color: silver;
+    text-align: justify;
+    font-family: "Roboto", sans-serif;
+    overflow: auto;
+    height: fit-content;
+
+}
+
+h1 {
+    margin-top: 50px;
+    font-size: 40px;
+}
+

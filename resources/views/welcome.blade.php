@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.guest')
 
-        <title>Welcome</title>
-    </head>
-    <body>
-        <h1>Progetto MiniGestioneUtenti</h1>
-    </body>
-</html>
+@section('title', 'Homepage')
+
+@section('extra-css')
+<link href="{{ asset('css/homepage.css') }}" rel="stylesheet">
+@endsection
+
+@section('content')
+        <h1>HOMEPAGE<h1>
+@endsection
