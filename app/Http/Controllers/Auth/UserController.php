@@ -17,6 +17,7 @@ class UserController extends Controller
         $user = User::with('userMeta', 'userMeta.country')->findOrFail($id);
         $userMeta = $user->userMeta;
         $isAdmin = Auth::user()->is_admin;
+        $isMyProfile = Auth::user()->id == $id;
         $countries = Country::all();
 
         return view('auth.user_profile', [
@@ -30,6 +31,7 @@ class UserController extends Controller
             'nazione' => $userMeta->country->name ?? 'N/A',
             'nazione_id' => $userMeta->nazione_id,
             'isAdmin' => $isAdmin,
+            'isMyProfile' => $isMyProfile,
             'countries' => $countries,
         ]);
     }

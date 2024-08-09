@@ -11,32 +11,10 @@
         <h2>Elenco degli utenti:</h2>
         <ul class="lista_utenti">
             @foreach($users as $user)
-                @if ($user->id !== Auth::id())
-                    @if ($user->userMeta)
-                        <li>
-                            <a href="{{ route('user.profile', $user->id) }}">
-                                {{ $user->userMeta->nome }} {{ $user->userMeta->cognome }}
-                            </a>
-                        </li>
-                    @else
-                        <li>
-                            <a href="#">
-                                Informazioni incomplete per l'utente con email: {{ $user->email }}
-                            </a>
-                        </li>
-                    @endif
-                @else
-                    @if ($user->userMeta)
-                            <li>
-                            <a href="{{ route('profile.update', $user->id) }}" style="color: aqua";>    
-                                {{ $user->userMeta->nome }} {{ $user->userMeta->cognome }}
-                            </li>
-                        @else
-                            <li>
-                                Informazioni incomplete per l'utente con email: {{ $user->email }}
-                            </li>
-                        @endif
-                    @endif
+                <li>
+                    <a href="{{ route('user.profile', $user->id) }}" style="color: {{$user->id == Auth::id() ? 'aqua' : 'white'}}" >    
+                        {{ $user->userMeta->nome }} {{ $user->userMeta->cognome }} </a>
+                </li>
             @endforeach
         </ul>
 @endsection
