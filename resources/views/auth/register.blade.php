@@ -21,7 +21,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             if ({{ session('success') ? 'true' : 'false' }}) {
                 var buttonsDiv = document.getElementById('form-buttons');
-                buttonsDiv.innerHTML = '<div class="success-message">{{ session('success') }}</div>';
+                buttonsDiv.innerHTML = '<div class="success-message">{{ session("success") }}</div>';
             }
         });
     </script>
