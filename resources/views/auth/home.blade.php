@@ -28,6 +28,7 @@
                 @else
                     @if ($user->userMeta)
                             <li>
+                            <a href="{{ route('profile.update', $user->id) }}" style="color: aqua";>    
                                 {{ $user->userMeta->nome }} {{ $user->userMeta->cognome }}
                             </li>
                         @else
