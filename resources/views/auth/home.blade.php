@@ -12,12 +12,12 @@
         <ul class="lista_utenti">
             @foreach($users as $user)
                 <li>
-                    <a href="{{ route('user.profile', $user->id) }}" style="color: {{$user->id == Auth::id() ? 'aqua' : 'white'}}" >    
+                    <a href="{{ route('user.profile', $user->id) }}" style="color: {{$user->id == Auth::id() ? 'aqua' : 'silver'}}" >    
                         {{ $user->userMeta->nome }} {{ $user->userMeta->cognome }} </a>
                 </li>
             @endforeach
         </ul>
-@endsection
+@endsectionaaaa
     
 
 
