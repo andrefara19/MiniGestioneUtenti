@@ -1,33 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $nome }} {{ $cognome }}</title>
-    <link href="{{ asset('css/header.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
-</head>
-<body>
-    <header class="header">
-        <span class="logo">Mini Gestione Utenti</span>
-        <input id="menu-button" class="menu-button" type="checkbox">
-        <label for="menu-button" class="menu-label">
-            <span class="menu-icon"></span>
-        </label>
-        <ul class="menu">
-            @guest
-                <li><a href="{{ url('/registrati/') }}">REGISTRATI</a></li>
-                <li><a href="{{ url('/login/') }}">LOGIN</a></li>
-            @else
-                <li><a href="{{ url('/profilo/') }}">PROFILO</a></li>
-                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LOGOUT</a></li>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-            @endguest
-        </ul>
-    </header>
-    <main class="main">
+@extends('layouts.app')
+
+@section('title', 'Home')
+
+@section('extra-css')
+<link href="{{ asset('css/home.css') }}" rel="stylesheet">
+@endsection
+
+@section('content')
         <h1>Welcome, {{ $nome }}!</h1>
         <h2>Elenco degli utenti:</h2>
         <ul class="lista_utenti">
@@ -59,6 +38,7 @@
                     @endif
             @endforeach
         </ul>
-    </main> 
-</body>
-</html>
+@endsection
+    
+
+

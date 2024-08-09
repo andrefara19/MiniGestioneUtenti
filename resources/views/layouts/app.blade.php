@@ -17,8 +17,16 @@
             <span class="menu-icon"></span>
         </label>
         <ul class="menu">
-            <li><a href="{{ url('/registrati/') }}">REGISTRATI</a></li>
-            <li><a href="{{ url('/login/') }}">LOGIN</a></li>
+            @guest
+                <li><a href="{{ url('/registrati/') }}">REGISTRATI</a></li>
+                <li><a href="{{ url('/login/') }}">LOGIN</a></li>
+            @else
+                <li><a href="{{ url('/profilo/') }}">PROFILO</a></li>
+                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LOGOUT</a></li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            @endguest
         </ul>
     </header>
 
