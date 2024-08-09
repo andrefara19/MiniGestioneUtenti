@@ -45,7 +45,9 @@
             <input type="reset" class="reset_button" value="Resetta">
         </div>
         <br><br>
-        <p><span class="asterisk">*</span><span class="campi_obbligatori">Campi obbligatori</span></p>
+        <div class="campi_obbligatori">        
+            <p><span class="asterisk">*</span><span>  Campi obbligatori</span></p>
+        </div>
     </form>
 @endsection
 
