@@ -17,7 +17,7 @@
                 </li>
             @endforeach
         </ul>
-@endsectionaaaa
+@endsection
     
 
 
