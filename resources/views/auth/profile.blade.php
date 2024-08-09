@@ -1,6 +1,6 @@
 @extends('layouts.logged')
 
-@section('title', 'Profile')
+@section('title', 'Profilo')
 
 @section('extra-css')
 <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
@@ -50,6 +50,7 @@
             </ul>
             <button type="submit">Aggiorna profilo</button>
         </form>
+@endsection
 
 
 

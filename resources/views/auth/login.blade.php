@@ -1,6 +1,6 @@
 @extends('layouts.guest')
 
-@section('title', 'Registrati')
+@section('title', 'Login')
 
 @section('extra-css')
 <link href="{{ asset('css/login.css') }}" rel="stylesheet">
