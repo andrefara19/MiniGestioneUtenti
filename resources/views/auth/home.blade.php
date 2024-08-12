@@ -9,7 +9,7 @@
 @section('content')
         <h1>Welcome, {{ $nome }}!</h1>
         <h2>Elenco degli utenti:</h2>
-        <table style="border-collapse: collapse;">
+        <table>
             @foreach($users as $index=> $user)
             <tr>
                 <td><a href="{{ route('user.profile', $user->id) }}" style="color: {{$user->id == Auth::id() ? 'aqua' : 'silver'}}">

@@ -30,3 +30,11 @@ td {
     font-size: larger;
     vertical-align: middle;
 }
+
+table {
+    border-collapse: collapse;
+}
+
+tr:nth-child(even) { 
+    background-color: #122857; 
+}
