@@ -1,4 +1,4 @@
-@extends('layouts.guest')
+@extends('layouts.logged')
 
 @section('title', 'Home')
 
@@ -12,12 +12,11 @@
         <table>
             @foreach($users as $index=> $user)
             <tr>
-                <td><a href="{{ route('user.profile', $user->id) }}" style="color: {{$user->id == Auth::id() ? 'aqua' : 'silver'}}">
-                            {{ $user->userMeta->nome }} {{ $user->userMeta->cognome }}</a></td>
+                <td style="color: {{$user->id == Auth::id() ? 'aqua' : 'silver'}}">{{ $user->userMeta->nome }} {{ $user->userMeta->cognome }}</a></td>
                 <td style="color: {{$user->id == Auth::id() ? 'aqua' : 'silver'}}">{{ $user->email }}</td>
                     <div >
                 <td style="color: {{$user->id == Auth::id() ? 'aqua' : 'silver'}}">{{ $user->userMeta->cellulare }}</td>
-                    <div >
+                <td><a href="{{ route('user.profile', $user->id) }}" style="color: {{$user->id == Auth::id() ? 'aqua' : 'silver'}}"><i class="fa-regular fa-user"></i></a></td>
             </tr>
             @endforeach
 @endsection
