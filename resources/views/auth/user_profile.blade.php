@@ -14,7 +14,7 @@
             </div>
         @endforeach
     @endif
-        <h2>Profilo di {{ $nome }} {{ $cognome }}</h2>
+        <h2>{{ $isMyProfile ? 'Il tuo profilo, ' . $nome : 'Profilo di ' . $nome . ' ' . $cognome }}</h2>
         @if ($errors->any()) 
             @foreach ($errors->all() as $error)
                 <div class = "fail-message">
@@ -32,7 +32,7 @@
                 @csrf
                 @method('PUT')
                 <ul>
-                    <li>Nome: <input type="text" name="nome" value="{{ $nome }}" required {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}></li>
+                    <li>Nome: <input type="text" name="nome" value="{{ $nome }}" required {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}} ></li>
                     <li>Cognome: <input type="text" name="cognome" value="{{ $cognome }}" required {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}} ></li>
                     <li>Indirizzo: <input type="text" name="indirizzo" value="{{ $indirizzo }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}} ></li>
                     <li>CAP: <input type="text" name="cap" value="{{ $cap }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}} ></li>
