@@ -16,6 +16,8 @@
                             {{ $user->userMeta->nome }} {{ $user->userMeta->cognome }}</a></td>
                 <td style="color: {{$user->id == Auth::id() ? 'aqua' : 'silver'}}">{{ $user->email }}</td>
                     <div >
+                <td style="color: {{$user->id == Auth::id() ? 'aqua' : 'silver'}}">{{ $user->userMeta->cellulare }}</td>
+                    <div >
             </tr>
             @endforeach
 @endsection

@@ -45,6 +45,7 @@
                             @endforeach
                         </select> 
                     </li>
+                    <li>Cellulare: <input type="tel" name="cellulare" value="{{ $cellulare }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}} ></li>
                     <li>Email: <input type="email" name="email" value="{{ $email }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}} ></li>
                 </ul>
                 @if($isAdmin || $isMyProfile)

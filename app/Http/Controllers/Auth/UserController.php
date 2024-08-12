@@ -30,6 +30,7 @@ class UserController extends Controller
             'provincia' => $userMeta->provincia,
             'nazione' => $userMeta->country->name ?? 'N/A',
             'nazione_id' => $userMeta->nazione_id,
+            'cellulare' => $userMeta->cellulare,
             'isAdmin' => $isAdmin,
             'isMyProfile' => $isMyProfile,
             'countries' => $countries,
@@ -39,8 +40,10 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
+        $userMeta = $user->userMeta;
         $messages = [ 
             'email.unique' => 'L\'email è già stata utilizzata!',
+            'cellulare.unique' => 'Il numero di cellulare è già stato utilizzato!',
             'nome.required' => 'Il nome non può essere vuoto',
             'cognome.required' => 'Il cognome non può essere vuoto',
             'nome.regex' => 'Nel nome sono presenti numeri o caratteri speciali',
@@ -71,6 +74,7 @@ class UserController extends Controller
             'citta' => 'nullable|string|max:255',
             'provincia' => 'nullable|string|max:255',
             'nazione_id' => 'nullable|exists:countries,id',
+            'cellulare' => 'nullable|string|max:10|min:10|unique:user_meta,cellulare,' . $userMeta->id,
             'email' => [
                 'nullable',
                 'string',
@@ -78,7 +82,7 @@ class UserController extends Controller
                 'max:255',
                 'unique:users,email,' . $user->id,
         ], 
-        ], $messages);
+    ], $messages);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput(); 
@@ -88,6 +92,7 @@ class UserController extends Controller
             'email' => $request->email,
         ]);
 
+        $user = User::findOrFail($id);
         $userMeta = $user->userMeta;
 
         $userMeta->update([
@@ -98,6 +103,7 @@ class UserController extends Controller
             'citta' => $request->citta,
             'provincia' => $request->provincia,
             'nazione_id' => $request->nazione_id,
+            'cellulare' => $request->cellulare,
         ]);
 
         return redirect()->route('user.profile', $user->id)->with('success', 'Profilo modificato con successo!');

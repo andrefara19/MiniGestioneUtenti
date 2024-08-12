@@ -23,6 +23,7 @@ class RegisterController extends Controller
     {   
         $messages = [
             'email.unique' => 'L\'email è già stata utilizzata!',
+            'cellulare.unique' => 'Il numero di cellulare è già stato utilizzato!',
             'nome.required' => 'Il nome non può essere vuoto',
             'cognome.required' => 'Il cognome non può essere vuoto',
             'password.required' => 'La password non è valida',
@@ -54,6 +55,7 @@ class RegisterController extends Controller
             'citta' => 'nullable|string|max:255',
             'provincia' => 'nullable|string|max:255',
             'nazione_id' => 'required|exists:countries,id',
+            'cellulare' => 'required|string|max:10|min:10|unique:user_meta',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ], $messages);
@@ -76,6 +78,7 @@ class RegisterController extends Controller
             'citta' => $request->citta,
             'provincia' => $request->provincia,
             'nazione_id' => $request->nazione_id,
+            'cellulare' => $request->cellulare,
         ]);
 
         return redirect()->route('register')->with('success', 'Registrazione avvenuta con successo!');

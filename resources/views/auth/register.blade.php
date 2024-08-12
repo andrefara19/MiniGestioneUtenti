@@ -34,6 +34,8 @@
             @endforeach
         </select>
         <br><br>
+        <span class="asterisk">*</span> <input type="tel" name="cellulare" placeholder="Cellulare" required>
+        <br><br>
         <span class="asterisk">*</span> <input type="email" name="email" placeholder="Email" required>
         <br><br>
         <span class="asterisk">*</span> <input id="password" type="password" name="password" placeholder="Password" required minlength="8" oninput="validatePassword()">

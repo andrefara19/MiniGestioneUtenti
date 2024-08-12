@@ -20,6 +20,7 @@ class UserMeta extends Model
         'citta',
         'provincia',
         'nazione_id',
+        'cellulare',
     ];
 
     public function country()
