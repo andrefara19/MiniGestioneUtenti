@@ -9,20 +9,15 @@
 @section('content')
         <h1>Welcome, {{ $nome }}!</h1>
         <h2>Elenco degli utenti:</h2>
-        <ul class="lista_utenti" >
-            @foreach($users as $user)
-            <li style="display: grid; grid-template-columns: 1fr 1fr; margin-left: -15px; column-gap: 30px;">
+        <table style="border-collapse: collapse;">
+            @foreach($users as $index=> $user)
+            <tr>
+                <td><a href="{{ route('user.profile', $user->id) }}" style="color: {{$user->id == Auth::id() ? 'aqua' : 'silver'}}">
+                            {{ $user->userMeta->nome }} {{ $user->userMeta->cognome }}</a></td>
+                <td style="color: {{$user->id == Auth::id() ? 'aqua' : 'silver'}}">{{ $user->email }}</td>
                     <div >
-                        <a href="{{ route('user.profile', $user->id) }}" style="color: {{$user->id == Auth::id() ? 'aqua' : 'silver'}}">
-                            {{ $user->userMeta->nome }} {{ $user->userMeta->cognome }} 
-                        </a>
-                    </div>
-                    <div>
-                        {{ $user->email }}
-                    </div>
-            </li>
+            </tr>
             @endforeach
-        </ul>
 @endsection
     
 

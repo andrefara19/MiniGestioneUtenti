@@ -25,18 +25,8 @@ h2 {
     margin-top: 50px;
 }
 
-ul {
-    margin-left: -23px;
-    margin-top: 40px;
-    list-style-type: circle;
-}
-
-li {
-    padding-bottom: 25px;
+td {
+    padding: 20px 80px 10px 0px;
     font-size: larger;
-}
-
-.lista_utenti li a {
-    color: dodgerblue;
-    text-underline-position: under;
+    vertical-align: middle;
 }
