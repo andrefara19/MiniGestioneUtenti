@@ -41,17 +41,21 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $userMeta = $user->userMeta;
-        $messages = [ 
-            'email.unique' => 'L\'email è già stata utilizzata!',
-            'cellulare.unique' => 'Il numero di cellulare è già stato utilizzato!',
-            'nome.required' => 'Il nome non può essere vuoto',
-            'cognome.required' => 'Il cognome non può essere vuoto',
-            'nome.regex' => 'Nel nome sono presenti numeri o caratteri speciali',
-            'cognome.regex' => 'Nel cognome sono presenti numeri o caratteri speciali',
+        $messages = [
             'nome.regex_start' => 'Il nome non può iniziare con spazio',
-            'cognome.regex_start' => 'Il cognome non può iniziare con spazio',
+            'nome.regex' => 'Nel nome sono presenti numeri o caratteri speciali',
             'nome.regex_space' => 'Nel nome, dopo lo spazio, serve un carattere',
+            
+            'cognome.regex_start' => 'Il cognome non può iniziare con spazio',
+            'cognome.regex' => 'Nel cognome sono presenti numeri o caratteri speciali',
             'cognome.regex_space' => 'Nel cognome, dopo lo spazio, serve un carattere',
+
+            'email.unique' => 'L\'email è già stata utilizzata!',
+
+            'cellulare.unique' => 'Il numero di cellulare è già stato utilizzato!',
+            'cellulare.max' => 'Il numero di cellulare deve contenere esattamente 10 cifre',
+            'cellulare.min' => 'Il numero di cellulare deve contenere esattamente 10 cifre',
+            'cellulare.regex' => 'Il numero di cellulare deve contenere solo cifre senza spazi o lettere',
         ];
 
         $validator = Validator::make($request->all(), [
@@ -69,19 +73,20 @@ class UserController extends Controller
                 'regex:/^[^\s][A-Za-zÀ-ÿ\s]*[^\s]$/',
                 'regex:/^(?!.*[0-9!@#\$%\^&\*\(\)_\+={}\[\]\|\\:;\"\'<>,\.\?\/~`]).*$/'
             ],
+            'cellulare' => [
+                'nullable',
+                'string',
+                'max:10',
+                'min:10',
+                'regex:/^[0-9]{10}$/',
+                'unique:user_meta,cellulare,' . $userMeta->id,
+            ],
             'indirizzo' => 'nullable|string|max:255',
             'cap' => 'nullable|string|max:20',
             'citta' => 'nullable|string|max:255',
             'provincia' => 'nullable|string|max:255',
             'nazione_id' => 'nullable|exists:countries,id',
-            'cellulare' => 'nullable|string|max:10|min:10|unique:user_meta,cellulare,' . $userMeta->id,
-            'email' => [
-                'nullable',
-                'string',
-                'email',
-                'max:255',
-                'unique:users,email,' . $user->id,
-        ], 
+            'email' => 'nullable|string|email|max:255|unique:users,email,' . $user->id,
     ], $messages);
 
         if ($validator->fails()) {
