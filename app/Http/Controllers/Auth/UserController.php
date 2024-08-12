@@ -33,10 +33,12 @@ class UserController extends Controller
             'isAdmin' => $isAdmin,
             'isMyProfile' => $isMyProfile,
             'countries' => $countries,
+            'email' => $user->email,
         ]);
     }
     public function update(Request $request, $id)
     {
+        $user = User::findOrFail($id);
         $messages = [ 
             'email.unique' => 'L\'email è già stata utilizzata!',
             'nome.required' => 'Il nome non può essere vuoto',
@@ -69,13 +71,23 @@ class UserController extends Controller
             'citta' => 'nullable|string|max:255',
             'provincia' => 'nullable|string|max:255',
             'nazione_id' => 'nullable|exists:countries,id',
+            'email' => [
+                'nullable',
+                'string',
+                'email',
+                'max:255',
+                'unique:users,email,' . $user->id,
+        ], 
         ], $messages);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput(); 
         }
 
-        $user = User::findOrFail($id);
+        $user->update([
+            'email' => $request->email,
+        ]);
+
         $userMeta = $user->userMeta;
 
         $userMeta->update([

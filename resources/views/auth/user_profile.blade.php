@@ -45,6 +45,7 @@
                             @endforeach
                         </select> 
                     </li>
+                    <li>Email: <input type="email" name="email" value="{{ $email }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}} ></li>
                 </ul>
                 @if($isAdmin || $isMyProfile)
                     <button class="bottone_modifica" type="submit">Modifica Profilo</button>
@@ -56,9 +57,5 @@
                     @method('DELETE')
                     <button class="bottone_elimina" type="submit" onclick="return confirm('Sei sicuro di voler eliminare questo utente?')">Elimina Utente</button>
                 </form>
-            @endif
-            
-        
-
-        
+            @endif       
 @endsection
