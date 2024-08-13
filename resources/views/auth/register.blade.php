@@ -9,10 +9,15 @@
 @section('content')
 @if ($errors->any())
 @foreach ($errors->all() as $error)
-<div class="fail-message">
+<div class="alert alert-danger" role="alert">
     {{ $error }}
 </div>
 @endforeach
+@endif
+@if (session('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
 @endif
 <div class="row">
     <div class="col-sm-12 col-md-4"> </div>
@@ -95,3 +100,4 @@
     });
 </script>
 @endsection
+
