@@ -3,7 +3,7 @@
 @section('title', 'Login')
 
 @section('extra-css')
-<!-- <link href="{{ asset('css/login.css') }}" rel="stylesheet"> -->
+
 @endsection
 
 @section('content')
@@ -30,7 +30,7 @@
                     <div class="mb-3">
                         <input class="form-control" type="password" name="password" placeholder="Password" required minlength="8">
                     </div>
-                    <button class="btn btn-primary" type="submit">Login</button>
+                    <button class="btn btn-primary mt-3" type="submit">Login</button>
                 </form>
             </div>
         </div>

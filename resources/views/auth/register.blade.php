@@ -3,7 +3,7 @@
 @section('title', 'Registrati')
 
 @section('extra-css')
-<!-- <link href="{{ asset('css/register.css') }}" rel="stylesheet"> -->
+
 @endsection
 
 @section('content')
@@ -53,10 +53,10 @@
                         @endforeach
                     </select>
                     <div class="mb-3">
-                        <input class="form-control" type="text" name="cellulare" placeholder="Cellulare *" required>
+                        <input class="form-control" type="tel" name="cellulare" placeholder="Cellulare *" required>
                     </div>
                     <div class="mb-3">
-                        <input class="form-control" type="text" name="email" placeholder="Email *" required>
+                        <input class="form-control" type="email" name="email" placeholder="Email *" required>
                     </div>
                     <div class="mb-3">
                         <input class="form-control" id= "password" type="password" name="password" placeholder="Password *" minlength="8" required oninput="validatePassword()">
@@ -64,8 +64,8 @@
                     <div class="mb-3">
                         <input class="form-control" id= "confirmPassword" type="password" name="password_confirmation" placeholder="Conferma password *" required oninput="validatePassword()">
                     </div>
-                    <button class="btn btn-primary" type="submit">Registrati</button>
-                    <button class="btn btn-secondary" type="reset">Reset</button>
+                    <button class="btn btn-primary mt-3" type="submit">Registrati</button>
+                    <button class="btn btn-secondary mt-3" type="reset">Reset</button>
                 </form>
             </div>
         </div>

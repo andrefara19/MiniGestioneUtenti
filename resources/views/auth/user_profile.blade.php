@@ -1,62 +1,75 @@
-@extends('layouts.logged')
+@extends('layouts.app')
 
 @section('title', 'Utente')
 
 @section('extra-css')
-<link href="{{ asset('css/user_profile.css') }}" rel="stylesheet">
+
 @endsection
 
 @section('content')
-    @if ($errors->any())
-        @foreach ($errors->all() as $error)
-            <div class="fail-message">
-                {{ $error }}
-            </div>
-        @endforeach
-    @endif
-        <h2>{{ $isMyProfile ? 'Il tuo profilo, ' . $nome : 'Profilo di ' . $nome . ' ' . $cognome }}</h2>
-        @if ($errors->any()) 
-            @foreach ($errors->all() as $error)
-                <div class = "fail-message">
-                    {{ $error }}
-                </div>
-            @endforeach
-        @endif
-        @if (session('success'))
-            <div class="success-message">
-                {{ session('success') }}
-            </div>
-        @endif
-        
-            <form action="{{ route('user.update', $user->id) }}" method="POST">
-                @csrf
-                @method('PUT')
-                <ul>
-                    <li>Nome: <input type="text" name="nome" value="{{ $nome }}" required {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}} ></li>
-                    <li>Cognome: <input type="text" name="cognome" value="{{ $cognome }}" required {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}} ></li>
-                    <li>Indirizzo: <input type="text" name="indirizzo" value="{{ $indirizzo }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}} ></li>
-                    <li>CAP: <input type="text" name="cap" value="{{ $cap }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}} ></li>
-                    <li>Città: <input type="text" name="citta" value="{{ $citta }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}} ></li>
-                    <li>Provincia: <input type="text" name="provincia" value="{{ $provincia }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}} ></li>
-                    <li>Nazione: 
-                        <select name="nazione_id" required {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}} >
-                            @foreach($countries as $country)
-                                <option value="{{ $country->id }}" {{ $country->id == $nazione_id ? 'selected' : '' }}>{{ $country->name }}</option>
-                            @endforeach
-                        </select> 
-                    </li>
-                    <li>Cellulare: <input type="tel" name="cellulare" value="{{ $cellulare }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}} ></li>
-                    <li>Email: <input type="email" name="email" value="{{ $email }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}} ></li>
-                </ul>
-                @if($isAdmin || $isMyProfile)
-                    <button class="bottone_modifica" type="submit">Modifica Profilo</button>
-                @endif   
-            </form>
-            @if($isAdmin && !$isMyProfile)
-                <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="margin-top: 20px;">
+<h2 style="text-align: center; margin-bottom:30px;">{{ $isMyProfile ? 'Il tuo profilo, ' . $nome : 'Profilo di ' . $nome . ' ' . $cognome }}</h2>
+@if ($errors->any())
+@foreach ($errors->all() as $error)
+<div class="alert alert-danger" role="alert">
+    {{ $error }}
+</div>
+@endforeach
+@endif
+@if (session('success'))
+<div class="alert alert-success" role="alert">
+    {{ session('success') }}
+</div>
+@endif
+<div class="row">
+    <div class="col-sm-12 col-md-4"> </div>
+    <div class="col-sm-12 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <form action="{{ route('user.update', $user->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="mb-3">
+                        <input class="form-control" type="text" name="nome" value="{{ $nome }}" required {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" type="text" name="cognome" value="{{ $cognome }}" required {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" type="text" name="indirizzo" value="{{ $indirizzo }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" type="text" name="cap" value="{{ $cap }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" type="text" name="citta" value="{{ $citta }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" type="text" name="provincia" value="{{ $provincia }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
+                    </div>
+                    <select class="form-select mb-3" name="nazione_id" required {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
+                        @foreach($countries as $country)
+                        <option value="{{ $country->id }}" {{ $country->id == $nazione_id ? 'selected' : '' }}>{{ $country->name }}</option>
+                        @endforeach
+                    </select>
+                    <div class="mb-3">
+                        <input class="form-control" type="tel" name="cellulare" value="{{ $cellulare }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" type="email" name="email" value="{{ $email }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
+                        @if($isAdmin || $isMyProfile)
+                        <button class="btn btn-success mb-3 mt-4" type="submit">Modifica profilo</button>
+                        @endif
+                </form>
+                @if($isAdmin && !$isMyProfile)
+                <form action="{{ route('user.destroy', $user->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button class="bottone_elimina" type="submit" onclick="return confirm('Sei sicuro di voler eliminare questo utente?')">Elimina Utente</button>
+                    <button class="btn btn-danger" type="submit" onclick="return confirm('Sei sicuro di voler eliminare questo utente?')">Elimina utente</button>
+                    @endif
                 </form>
-            @endif       
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-4"> </div>
+</div>
 @endsection
