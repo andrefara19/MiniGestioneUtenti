@@ -8,7 +8,7 @@ body {
     text-shadow: 1px 1px 1px rgb(13, 16, 43);
     background-color: rgb(40, 47, 118);
     display: flex;
-    justify-content: left;
+    justify-content: center;
 }
 
 .main {
@@ -77,11 +77,12 @@ button {
 
 .bottone_modifica {
     background-color: #7ae6ff;
+    margin-left: 70px;
 }
 
 .bottone_elimina {
     background-color: orangered;
-    margin-left: 130px;
+    margin-left: 200px;
     margin-top: -14px;
 }
 
@@ -110,4 +111,8 @@ button {
     border: ridge darkred;
     background-color: black;
     width: 400px;
+}
+
+h2 {
+    text-align: center;
 }
