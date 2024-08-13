@@ -3,13 +3,12 @@
 @section('title', 'Login')
 
 @section('extra-css')
-
 @endsection
 
 @section('content')
 @if ($errors->any())
 @foreach ($errors->all() as $error)
-<div class="fail-message">
+<div class="alert alert-danger">
     {{ $error }}
 </div>
 @endforeach
@@ -30,7 +29,7 @@
                     <div class="mb-3">
                         <input class="form-control" type="password" name="password" placeholder="Password" required minlength="8">
                     </div>
-                    <button class="btn btn-primary mt-3" type="submit">Login</button>
+                    <button class="btn btn-primary" type="submit">Login</button>
                 </form>
             </div>
         </div>
