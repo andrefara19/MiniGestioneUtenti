@@ -52,7 +52,7 @@
                     <button class="bottone_modifica" type="submit">Modifica Profilo</button>
                 @endif   
             </form>
-            @if($isAdmin || $isMyProfile)
+            @if($isAdmin && !$isMyProfile)
                 <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="margin-top: 20px;">
                     @csrf
                     @method('DELETE')
