@@ -1,57 +1,74 @@
-@extends('layouts.guest')
+@extends('layouts.app')
 
 @section('title', 'Registrati')
 
 @section('extra-css')
-<link href="{{ asset('css/register.css') }}" rel="stylesheet">
+<!-- <link href="{{ asset('css/register.css') }}" rel="stylesheet"> -->
 @endsection
 
 @section('content')
-    @if ($errors->any())
-        @foreach ($errors->all() as $error)
-            <div class="fail-message">
-                {{ $error }}
+@if ($errors->any())
+@foreach ($errors->all() as $error)
+<div class="fail-message">
+    {{ $error }}
+</div>
+@endforeach
+@endif
+<div class="row">
+    <div class="col-sm-12 col-md-4"> </div>
+    <div class="col-sm-12 col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h4>Registrati</h4>
             </div>
-        @endforeach
-    @endif
-    <form class="register_form" action="{{ route('register') }}" method="POST">
-        @csrf
-        <span class="asterisk">*</span> <input type="text" name="nome" placeholder="Nome" required>
-        <br><br>
-        <span class="asterisk">*</span> <input type="text" name="cognome" placeholder="Cognome" required>
-        <br><br>
-        <input class="no_asterisk" type="text" name="indirizzo" placeholder="Indirizzo">
-        <br><br>
-        <input class="no_asterisk" type="text" name="cap" placeholder="CAP">
-        <br><br>
-        <input class="no_asterisk" type="text" name="citta" placeholder="Città">
-        <br><br>
-        <input class="no_asterisk" type="text" name="provincia" placeholder="Provincia">
-        <br><br>
-        <span class="asterisk">*</span><select class="nazione" name="nazione_id" required>
-            @foreach($countries as $country)
-                <option value="{{ $country->id }}">{{ $country->name }}</option>
-            @endforeach
-        </select>
-        <br><br>
-        <span class="asterisk">*</span> <input type="tel" name="cellulare" placeholder="Cellulare" required>
-        <br><br>
-        <span class="asterisk">*</span> <input type="email" name="email" placeholder="Email" required>
-        <br><br>
-        <span class="asterisk">*</span> <input id="password" type="password" name="password" placeholder="Password" required minlength="8" oninput="validatePassword()">
-        <br><br>
-        <span class="asterisk">*</span> <input id="confirmPassword" type="password" name="password_confirmation" placeholder="Conferma Password" required oninput="validatePassword()">
-        <br><br>
-        <div id="form-buttons">
-            <button class="register_button" type="submit">Registrati</button>
-            <input type="reset" class="reset_button" value="Resetta">
+            <div class="card-body">
+                <form action="{{ route('register') }}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <input class="form-control" type="text" name="nome" placeholder="Nome *" required>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" type="text" name="cognome" placeholder="Cognome *" required>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" type="text" name="indirizzo" placeholder="Indirizzo">
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" type="text" name="cap" placeholder="CAP">
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" type="text" name="citta" placeholder="Città">
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" type="text" name="provincia" placeholder="Provincia">
+                    </div>
+                    <select class="form-select mb-3" name="nazione_id" required>
+                        @foreach($countries as $country)
+                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                        @endforeach
+                    </select>
+                    <div class="mb-3">
+                        <input class="form-control" type="text" name="cellulare" placeholder="Cellulare *" required>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" type="text" name="email" placeholder="Email *" required>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" id= "password" type="password" name="password" placeholder="Password *" minlength="8" required oninput="validatePassword()">
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" id= "confirmPassword" type="password" name="password_confirmation" placeholder="Conferma password *" required oninput="validatePassword()">
+                    </div>
+                    <button class="btn btn-primary" type="submit">Registrati</button>
+                    <button class="btn btn-secondary" type="reset">Reset</button>
+                </form>
+            </div>
         </div>
-        <br><br>
-        <div class="campi_obbligatori">        
-            <p><span class="asterisk">*</span><span>  Campi obbligatori</span></p>
-        </div>
-    </form>
+    </div>
+    <div class="col-sm-12 col-md-4"> </div>
+</div>
 @endsection
+
 
 @section('extra-scripts')
 <script>
@@ -66,9 +83,14 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-        if ({{ session('success') ? 'true' : 'false' }}) {
+        if ({
+                {
+                    session('success') ? 'true' : 'false'
+                }
+            }) {
             var buttonsDiv = document.getElementById('form-buttons');
-            buttonsDiv.innerHTML = '<div class="success-message">{{ session('success') }}</div>';
+            buttonsDiv.innerHTML = '<div class="success-message">{{ session('
+            success ') }}</div>';
         }
     });
 </script>

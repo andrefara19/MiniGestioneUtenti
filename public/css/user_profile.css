@@ -93,10 +93,8 @@ button {
     align-items: center;
     border-radius: 2%;
     padding: 10px;
-    padding-left: 15px;
     margin-bottom: -12px;
     height: 40px;
-    align-content: center;
 }
 
 .success-message {
