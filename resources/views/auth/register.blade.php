@@ -7,6 +7,9 @@
 @endsection
 
 @section('content')
+<div id="app">
+    <register />
+</div>
 @if ($errors->any())
 @foreach ($errors->all() as $error)
 <div class="alert alert-danger" role="alert">
@@ -17,7 +20,7 @@
 @if (session('success'))
     <div class="alert alert-success" role="alert">
         {{ session('success') }}
-    </div>
+    </div> 
 @endif
 <div class="row">
     <div class="col-sm-12 col-md-4"> </div>
