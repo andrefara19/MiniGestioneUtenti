@@ -1,0 +1,126 @@
+<?php
+
+namespace App\Http\Controllers\Auth;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use App\Models\User;
+use App\Models\Country;
+
+
+class UserController extends Controller
+{
+    public function show($id)
+    {
+        $user = User::with('userMeta', 'userMeta.country')->findOrFail($id);
+        $userMeta = $user->userMeta;
+        $isAdmin = Auth::user()->is_admin;
+        $isMyProfile = Auth::user()->id == $id;
+        $countries = Country::all();
+
+        return view('auth.user_profile', [
+            'user' => $user,
+            'nome' => $userMeta->nome,
+            'cognome' => $userMeta->cognome,
+            'indirizzo' => $userMeta->indirizzo,
+            'cap' => $userMeta->cap,
+            'citta' => $userMeta->citta,
+            'provincia' => $userMeta->provincia,
+            'nazione' => $userMeta->country->name ?? 'N/A',
+            'nazione_id' => $userMeta->nazione_id,
+            'cellulare' => $userMeta->cellulare,
+            'isAdmin' => $isAdmin,
+            'isMyProfile' => $isMyProfile,
+            'countries' => $countries,
+            'email' => $user->email,
+        ]);
+    }
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $userMeta = $user->userMeta;
+        $messages = [
+            'nome.regex_start' => 'Il nome non può iniziare con spazio',
+            'nome.regex' => 'Nel nome sono presenti numeri o caratteri speciali',
+            'nome.regex_space' => 'Nel nome, dopo lo spazio, serve un carattere',
+            
+            'cognome.regex_start' => 'Il cognome non può iniziare con spazio',
+            'cognome.regex' => 'Nel cognome sono presenti numeri o caratteri speciali',
+            'cognome.regex_space' => 'Nel cognome, dopo lo spazio, serve un carattere',
+
+            'email.unique' => 'L\'email è già stata utilizzata!',
+
+            'cellulare.unique' => 'Il numero di cellulare è già stato utilizzato!',
+            'cellulare.max' => 'Il numero di cellulare deve contenere esattamente 10 cifre',
+            'cellulare.min' => 'Il numero di cellulare deve contenere esattamente 10 cifre',
+            'cellulare.regex' => 'Il numero di cellulare deve contenere solo cifre senza spazi o lettere',
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'nome' => [
+                'required',
+                'string',
+                'max:255',
+                'regex:/^[^\s][A-Za-zÀ-ÿ\s]*[^\s]$/',
+                'regex:/^(?!.*[0-9!@#\$%\^&\*\(\)_\+={}\[\]\|\\:;\"\'<>,\.\?\/~`]).*$/'
+            ],
+            'cognome' => [
+                'required',
+                'string',
+                'max:255',
+                'regex:/^[^\s][A-Za-zÀ-ÿ\s]*[^\s]$/',
+                'regex:/^(?!.*[0-9!@#\$%\^&\*\(\)_\+={}\[\]\|\\:;\"\'<>,\.\?\/~`]).*$/'
+            ],
+            'cellulare' => [
+                'nullable',
+                'string',
+                'max:10',
+                'min:10',
+                'regex:/^[0-9]{10}$/',
+                'unique:user_meta,cellulare,' . $userMeta->id,
+            ],
+            'indirizzo' => 'nullable|string|max:255',
+            'cap' => 'nullable|string|max:20',
+            'citta' => 'nullable|string|max:255',
+            'provincia' => 'nullable|string|max:255',
+            'nazione_id' => 'nullable|exists:countries,id',
+            'email' => 'nullable|string|email|max:255|unique:users,email,' . $user->id,
+    ], $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput(); 
+        }
+
+        $user->update([
+            'email' => $request->email,
+        ]);
+
+        $user = User::findOrFail($id);
+        $userMeta = $user->userMeta;
+
+        $userMeta->update([
+            'nome' => $request->nome,
+            'cognome' => $request->cognome,
+            'indirizzo' => $request->indirizzo,
+            'cap' => $request->cap,
+            'citta' => $request->citta,
+            'provincia' => $request->provincia,
+            'nazione_id' => $request->nazione_id,
+            'cellulare' => $request->cellulare,
+        ]);
+
+        return redirect()->route('user.profile', $user->id)->with('success', 'Profilo modificato con successo!');
+    }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('home')->with('success', 'Utente eliminato con successo!');
+    }
+
+
+}
