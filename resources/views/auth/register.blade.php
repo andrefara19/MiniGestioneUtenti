@@ -24,7 +24,7 @@
 @endif
 <div class="row">
     <div class="col-sm-12 col-md-4"> </div>
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-4" style="margin-bottom: 30px;">
         <div class="card">
             <div class="card-header">
                 <h4>Registrati</h4>
