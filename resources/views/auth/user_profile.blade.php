@@ -29,22 +29,22 @@
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
-                        <input class="form-control" type="text" name="nome" value="{{ $nome }}" required {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
+                        <input class="form-control" type="text" name="nome" value="{{ $nome }}" placeholder="Nome" required {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
                     </div>
                     <div class="mb-3">
-                        <input class="form-control" type="text" name="cognome" value="{{ $cognome }}" required {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
+                        <input class="form-control" type="text" name="cognome" value="{{ $cognome }}" placeholder="Cognome" required {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
                     </div>
                     <div class="mb-3">
-                        <input class="form-control" type="text" name="indirizzo" value="{{ $indirizzo }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
+                        <input class="form-control" type="text" name="indirizzo" value="{{ $indirizzo }}" placeholder="Indirizzo" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
                     </div>
                     <div class="mb-3">
-                        <input class="form-control" type="text" name="cap" value="{{ $cap }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
+                        <input class="form-control" type="text" name="cap" value="{{ $cap }}" placeholder="Cap" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
                     </div>
                     <div class="mb-3">
-                        <input class="form-control" type="text" name="citta" value="{{ $citta }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
+                        <input class="form-control" type="text" name="citta" value="{{ $citta }}" placeholder="Città" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
                     </div>
                     <div class="mb-3">
-                        <input class="form-control" type="text" name="provincia" value="{{ $provincia }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
+                        <input class="form-control" type="text" name="provincia" value="{{ $provincia }}" placeholder="Provincia" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
                     </div>
                     <select class="form-select mb-3" name="nazione_id" required {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
                         @foreach($countries as $country)
@@ -52,13 +52,14 @@
                         @endforeach
                     </select>
                     <div class="mb-3">
-                        <input class="form-control" type="tel" name="cellulare" value="{{ $cellulare }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
+                        <input class="form-control" type="tel" name="cellulare" value="{{ $cellulare }}" placeholder="Cellulare" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
                     </div>
                     <div class="mb-3">
-                        <input class="form-control" type="email" name="email" value="{{ $email }}" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
-                        @if($isAdmin || $isMyProfile)
-                        <button class="btn btn-success mb-3 mt-4" type="submit">Modifica profilo</button>
-                        @endif
+                        <input class="form-control" type="email" name="email" value="{{ $email }}" placeholder="Email" {{!$isAdmin && !$isMyProfile ? 'disabled' : ''}}>
+                    </div>
+                    @if($isAdmin || $isMyProfile)
+                    <button class="btn btn-success mb-3 mt-4" type="submit">Modifica profilo</button>
+                    @endif
                 </form>
                 @if($isAdmin && !$isMyProfile)
                 <form action="{{ route('user.destroy', $user->id) }}" method="POST">
