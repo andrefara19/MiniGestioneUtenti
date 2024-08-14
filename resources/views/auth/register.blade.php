@@ -67,7 +67,7 @@
                     <div class="mb-3">
                         <input class="form-control" id= "confirmPassword" type="password" name="password_confirmation" placeholder="Conferma password *" required oninput="validatePassword()">
                     </div>
-                    <button class="btn btn-primary mt-3" type="submit">Registrati</button>
+                    <button class="btn btn-primary mt-3" style="margin-right: 10px;" type="submit">Registrati</button>
                     <button class="btn btn-secondary mt-3" type="reset">Reset</button>
                 </form>
             </div>
