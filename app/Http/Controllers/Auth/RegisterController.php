@@ -24,21 +24,22 @@ class RegisterController extends Controller
     }
 
     public function register(Request $request)
-    {   
+    {
         $messages = [
             'nome.regex_start' => 'Il nome non può iniziare con spazio',
             'nome.regex' => 'Nel nome sono presenti numeri o caratteri speciali',
             'nome.regex_space' => 'Nel nome, dopo lo spazio, serve un carattere',
             'nome.required' => 'Il nome non può essere vuoto',
-            
+
             'cognome.regex_start' => 'Il cognome non può iniziare con spazio',
             'cognome.regex' => 'Nel cognome sono presenti numeri o caratteri speciali',
             'cognome.regex_space' => 'Nel cognome, dopo lo spazio, serve un carattere',
             'cognome.required' => 'Il cognome non può essere vuoto',
-            
+
             'password.min' => 'La password deve contenere almeno 8 caratteri',
             'password.required' => 'La password non può essere vuota',
 
+            'email.regex' => 'Immettere una email valida',
             'email.unique' => 'L\'email è già stata utilizzata',
             'email.required' => 'L\'email non può essere vuota',
 
@@ -79,7 +80,7 @@ class RegisterController extends Controller
             'citta' => 'nullable|string|max:255',
             'provincia' => 'nullable|string|max:255',
             'nazione_id' => 'required|exists:countries,id',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ], $messages);
 

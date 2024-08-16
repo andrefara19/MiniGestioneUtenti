@@ -48,7 +48,7 @@
                                 <div v-if="errori.cellulare" class="text-danger">{{ errori.cellulare[0] }}</div>
                             </div>
                             <div class="mb-3">
-                                <input class="form-control" type="email" id="email" v-model="email" placeholder="Email *">
+                                <input class="form-control" id="email" v-model="email" placeholder="Email *">
                                 <div v-if="errori.email" class="text-danger">{{ errori.email[0] }}</div>
                             </div>
                             <div class="mb-3">
