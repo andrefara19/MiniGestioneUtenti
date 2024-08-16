@@ -13,11 +13,11 @@
                         </div>
                         <form @submit.prevent="register">
                             <div class="mb-3">
-                                <input class="form-control" type="text" id="nome" v-model="nome" placeholder="Nome *" required>
+                                <input class="form-control" type="text" id="nome" v-model="nome" placeholder="Nome *">
                                 <div v-if="errori.nome" class="text-danger">{{ errori.nome[0] }}</div>
                             </div>
                             <div class="mb-3">
-                                <input class="form-control" type="text" id="cognome" v-model="cognome" placeholder="Cognome *" required>
+                                <input class="form-control" type="text" id="cognome" v-model="cognome" placeholder="Cognome *">
                                 <div v-if="errori.cognome" class="text-danger">{{ errori.cognome[0] }}</div>
                             </div>
                             <div class="mb-3">
@@ -37,26 +37,26 @@
                                 <div v-if="errori.provincia" class="text-danger">{{ errori.provincia[0] }}</div>
                             </div>
                             <div class="mb-3">
-                                <select class="form-select" id="nazione" v-model="nazione_id" required>
+                                <select class="form-select" id="nazione" v-model="nazione_id">
                                     <option value="" disabled selected hidden>Seleziona una nazione *</option>
                                     <option v-for="country in countries" :value="country.id" :key="country.id">{{ country.name }}</option>
                                 </select>
                                 <div v-if="errori.nazione_id" class="text-danger">{{ errori.nazione_id[0] }}</div>
                             </div>
                             <div class="mb-3">
-                                <input class="form-control" type="tel" id="cellulare" v-model="cellulare" placeholder="Cellulare *" required>
+                                <input class="form-control" type="tel" id="cellulare" v-model="cellulare" placeholder="Cellulare *">
                                 <div v-if="errori.cellulare" class="text-danger">{{ errori.cellulare[0] }}</div>
                             </div>
                             <div class="mb-3">
-                                <input class="form-control" type="email" id="email" v-model="email" placeholder="Email *" required>
+                                <input class="form-control" type="email" id="email" v-model="email" placeholder="Email *">
                                 <div v-if="errori.email" class="text-danger">{{ errori.email[0] }}</div>
                             </div>
                             <div class="mb-3">
-                                <input class="form-control" id="password" type="password" v-model="password" placeholder="Password *" minlength="8" required @input="validatePassword">
+                                <input class="form-control" id="password" type="password" v-model="password" placeholder="Password *" @input="validatePassword">
                                 <div v-if="errori.password" class="text-danger">{{ errori.password[0] }}</div>
                             </div>
                             <div class="mb-3">
-                                <input class="form-control" id="confirmPassword" type="password" v-model="confirmPassword" placeholder="Conferma password *" required @input="validatePassword">
+                                <input class="form-control" id="confirmPassword" type="password" v-model="confirmPassword" placeholder="Conferma password *" @input="validatePassword">
                             </div>
                             <button class="btn btn-primary mt-3" style="margin-right: 10px;" type="submit">Registrati</button>
                             <button class="btn btn-secondary mt-3" type="reset">Reset</button>

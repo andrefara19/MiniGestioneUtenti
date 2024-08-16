@@ -35,16 +35,20 @@ class RegisterController extends Controller
             'cognome.regex' => 'Nel cognome sono presenti numeri o caratteri speciali',
             'cognome.regex_space' => 'Nel cognome, dopo lo spazio, serve un carattere',
             'cognome.required' => 'Il cognome non può essere vuoto',
+            
+            'password.min' => 'La password deve contenere almeno 8 caratteri',
+            'password.required' => 'La password non può essere vuota',
 
-            'password.required' => 'La password non è valida',
+            'email.unique' => 'L\'email è già stata utilizzata',
+            'email.required' => 'L\'email non può essere vuota',
 
-            'email.unique' => 'L\'email è già stata utilizzata!',
-
-            'cellulare.unique' => 'Il numero di cellulare è già stato utilizzato!',
-            'cellulare.required' => 'Il numero di cellulare è obbligatorio!',
-            'cellulare.max' => 'Il numero di cellulare deve contenere 10 cifre',
-            'cellulare.min' => 'Il numero di cellulare deve contenere 10 cifre',
+            'cellulare.unique' => 'Il numero di cellulare è già stato utilizzato',
+            'cellulare.required' => 'Il cellulare non può essere vuoto',
+            'cellulare.max' => 'Il numero di cellulare deve essere di 10 cifre',
+            'cellulare.min' => 'Il numero di cellulare deve essere di 10 cifre',
             'cellulare.regex' => 'Il numero di cellulare deve contenere solo cifre',
+
+            'nazione_id.required' => 'La nazione deve essere selezionata'
         ];
 
         $validator = Validator::make($request->all(), [
