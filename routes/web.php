@@ -13,6 +13,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::prefix('api')->group(function () {
+    Route::get('/countries', [RegisterController::class, 'getCountries']);
+});
+
 Route::get('registrati', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('registrati', [RegisterController::class, 'register']);
 

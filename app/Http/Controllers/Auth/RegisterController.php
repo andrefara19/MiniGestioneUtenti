@@ -10,13 +10,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-
 class RegisterController extends Controller
 {
     public function showRegistrationForm()
     {
+        return view('auth.register');
+    }
+
+    public function getCountries()
+    {
         $countries = Country::all();
-        return view('auth.register', compact('countries'));
+        return response()->json($countries);
     }
 
     public function register(Request $request)
@@ -38,9 +42,9 @@ class RegisterController extends Controller
 
             'cellulare.unique' => 'Il numero di cellulare è già stato utilizzato!',
             'cellulare.required' => 'Il numero di cellulare è obbligatorio!',
-            'cellulare.max' => 'Il numero di cellulare deve contenere esattamente 10 cifre',
-            'cellulare.min' => 'Il numero di cellulare deve contenere esattamente 10 cifre',
-            'cellulare.regex' => 'Il numero di cellulare deve contenere solo cifre senza spazi o lettere',
+            'cellulare.max' => 'Il numero di cellulare deve contenere 10 cifre',
+            'cellulare.min' => 'Il numero di cellulare deve contenere 10 cifre',
+            'cellulare.regex' => 'Il numero di cellulare deve contenere solo cifre',
         ];
 
         $validator = Validator::make($request->all(), [
@@ -76,7 +80,10 @@ class RegisterController extends Controller
         ], $messages);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors(),
+            ], 422);
         }
 
         $user = User::create([
@@ -96,6 +103,9 @@ class RegisterController extends Controller
             'cellulare' => $request->cellulare,
         ]);
 
-        return redirect()->route('register')->with('success', 'Registrazione avvenuta con successo!');
+        return response()->json([
+            'success' => true,
+            'message' => 'Registrazione avvenuta con successo!',
+        ], 201);
     }
 }
