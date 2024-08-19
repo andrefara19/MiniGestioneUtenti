@@ -41,17 +41,22 @@ class UserController extends Controller
             'nome.regex_start' => 'Il nome non può iniziare con spazio',
             'nome.regex' => 'Nel nome sono presenti numeri o caratteri speciali',
             'nome.regex_space' => 'Nel nome, dopo lo spazio, serve un carattere',
+            'nome.required' => 'Il nome non può essere vuoto',
 
             'cognome.regex_start' => 'Il cognome non può iniziare con spazio',
             'cognome.regex' => 'Nel cognome sono presenti numeri o caratteri speciali',
             'cognome.regex_space' => 'Nel cognome, dopo lo spazio, serve un carattere',
+            'cognome.required' => 'Il cognome non può essere vuoto',
 
+            'email.regex' => 'Immettere una email valida',
             'email.unique' => 'L\'email è già stata utilizzata!',
+            'email.required' => 'L\'email non può essere vuota',
 
-            'cellulare.unique' => 'Il numero di cellulare è già stato utilizzato!',
-            'cellulare.max' => 'Il numero di cellulare deve contenere esattamente 10 cifre',
-            'cellulare.min' => 'Il numero di cellulare deve contenere esattamente 10 cifre',
-            'cellulare.regex' => 'Il numero di cellulare deve contenere solo cifre senza spazi o lettere',
+            'cellulare.unique' => 'Il numero di cellulare è già stato utilizzato',
+            'cellulare.required' => 'Il cellulare non può essere vuoto',
+            'cellulare.max' => 'Il numero di cellulare deve essere di 10 cifre',
+            'cellulare.min' => 'Il numero di cellulare deve essere di 10 cifre',
+            'cellulare.regex' => 'Il numero di cellulare deve contenere solo cifre',
         ];
 
         $validator = Validator::make($request->all(), [
@@ -70,7 +75,7 @@ class UserController extends Controller
                 'regex:/^(?!.*[0-9!@#\$%\^&\*\(\)_\+={}\[\]\|\\:;\"\'<>,\.\?\/~]).*$/'
             ],
             'cellulare' => [
-                'nullable',
+                'required',
                 'string',
                 'max:10',
                 'min:10',
@@ -82,7 +87,7 @@ class UserController extends Controller
             'citta' => 'nullable|string|max:255',
             'provincia' => 'nullable|string|max:255',
             'nazione_id' => 'nullable|exists:countries,id',
-            'email' => 'nullable|string|email|max:255|unique:users,email,' . $user->id,
+            'email' => 'required|string|email|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/|max:255|unique:users,email,' . $user->id,
         ], $messages);
 
         if ($validator->fails()) {

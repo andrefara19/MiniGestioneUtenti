@@ -17,12 +17,12 @@
                         <form @submit.prevent="submitForm">
                             <div class="mb-3">
                                 <input class="form-control" type="text" id="nome" v-model="formData.nome"
-                                    placeholder="Nome" :disabled="!canEdit" required>
+                                    placeholder="Nome" :disabled="!canEdit">
                                 <div v-if="errori.nome" class="text-danger">{{ errori.nome[0] }}</div>
                             </div>
                             <div class="mb-3">
                                 <input class="form-control" type="text" id="cognome" v-model="formData.cognome"
-                                    placeholder="Cognome" :disabled="!canEdit" required>
+                                    placeholder="Cognome" :disabled="!canEdit">
                                 <div v-if="errori.cognome" class="text-danger">{{ errori.cognome[0] }}</div>
                             </div>
                             <div class="mb-3">
