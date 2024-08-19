@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <h2 class="text-center mb-4">
-            {{ isMyProfile ? 'Il tuo profilo, ' + formData.nome : 'Profilo di ' + formData.nome + ' ' + formData.cognome
+            {{ isMyProfile ? 'Il tuo profilo, ' + initialNome : 'Profilo di ' + initialNome + ' ' + initialCognome
             }}
         </h2>
 
@@ -99,6 +99,8 @@ export default {
     },
     data() {
         return {
+            initialNome: this.nome,
+            initialCognome: this.cognome,
             formData: {
                 nome: this.nome,
                 cognome: this.cognome,
@@ -112,8 +114,11 @@ export default {
             },
             errori: {},
             successMessage: '',
-            isDeleteSuccess: false,
         };
+    },
+    mounted() {
+        this.formData.nome = this.nome;
+        this.formData.cognome = this.cognome;
     },
     computed: {
         canEdit() {
