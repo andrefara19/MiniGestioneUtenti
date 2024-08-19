@@ -12,7 +12,7 @@
         <table class="table table-striped mt-5">
             @foreach($users as $index=> $user)
             <tr>
-                <td style="color: {{$user->id == Auth::id() ? 'aqua' : '#1a1a1a'}}">{{ $user->userMeta->nome }} {{ $user->userMeta->cognome }}</a></td>
+                <td style="color: {{$user->id == Auth::id() ? 'aqua' : '#1a1a1a'}}">{{ $user->userMeta->cognome }} {{ $user->userMeta->nome }}</a></td>
                 <td style="color: {{$user->id == Auth::id() ? 'aqua' : '#1a1a1a'}}">{{ $user->email }}</td>
                     <div >
                 <td style="color: {{$user->id == Auth::id() ? 'aqua' : '#1a1a1a'}}">{{ $user->userMeta->cellulare }}</td>

@@ -15,26 +15,22 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::with('userMeta', 'userMeta.country')->findOrFail($id);
-        $userMeta = $user->userMeta;
-        $isAdmin = Auth::user()->is_admin;
-        $isMyProfile = Auth::user()->id == $id;
         $countries = Country::all();
 
         return view('auth.user_profile', [
             'user' => $user,
-            'nome' => $userMeta->nome,
-            'cognome' => $userMeta->cognome,
-            'indirizzo' => $userMeta->indirizzo,
-            'cap' => $userMeta->cap,
-            'citta' => $userMeta->citta,
-            'provincia' => $userMeta->provincia,
-            'nazione' => $userMeta->country->name ?? 'N/A',
-            'nazione_id' => $userMeta->nazione_id,
-            'cellulare' => $userMeta->cellulare,
-            'isAdmin' => $isAdmin,
-            'isMyProfile' => $isMyProfile,
-            'countries' => $countries,
+            'nome' => $user->userMeta->nome,
+            'cognome' => $user->userMeta->cognome,
+            'indirizzo' => $user->userMeta->indirizzo,
+            'cap' => $user->userMeta->cap,
+            'citta' => $user->userMeta->citta,
+            'provincia' => $user->userMeta->provincia,
+            'nazione_id' => $user->userMeta->nazione_id,
+            'cellulare' => $user->userMeta->cellulare,
             'email' => $user->email,
+            'isAdmin' => Auth::user()->is_admin,
+            'isMyProfile' => Auth::id() == $user->id,
+            'countries' => $countries
         ]);
     }
     public function update(Request $request, $id)
@@ -45,7 +41,7 @@ class UserController extends Controller
             'nome.regex_start' => 'Il nome non può iniziare con spazio',
             'nome.regex' => 'Nel nome sono presenti numeri o caratteri speciali',
             'nome.regex_space' => 'Nel nome, dopo lo spazio, serve un carattere',
-            
+
             'cognome.regex_start' => 'Il cognome non può iniziare con spazio',
             'cognome.regex' => 'Nel cognome sono presenti numeri o caratteri speciali',
             'cognome.regex_space' => 'Nel cognome, dopo lo spazio, serve un carattere',
@@ -64,14 +60,14 @@ class UserController extends Controller
                 'string',
                 'max:255',
                 'regex:/^[^\s][A-Za-zÀ-ÿ\s]*[^\s]$/',
-                'regex:/^(?!.*[0-9!@#\$%\^&\*\(\)_\+={}\[\]\|\\:;\"\'<>,\.\?\/~`]).*$/'
+                'regex:/^(?!.*[0-9!@#\$%\^&\*\(\)_\+={}\[\]\|\\:;\"\'<>,\.\?\/~]).*$/'
             ],
             'cognome' => [
                 'required',
                 'string',
                 'max:255',
                 'regex:/^[^\s][A-Za-zÀ-ÿ\s]*[^\s]$/',
-                'regex:/^(?!.*[0-9!@#\$%\^&\*\(\)_\+={}\[\]\|\\:;\"\'<>,\.\?\/~`]).*$/'
+                'regex:/^(?!.*[0-9!@#\$%\^&\*\(\)_\+={}\[\]\|\\:;\"\'<>,\.\?\/~]).*$/'
             ],
             'cellulare' => [
                 'nullable',
@@ -87,31 +83,28 @@ class UserController extends Controller
             'provincia' => 'nullable|string|max:255',
             'nazione_id' => 'nullable|exists:countries,id',
             'email' => 'nullable|string|email|max:255|unique:users,email,' . $user->id,
-    ], $messages);
+        ], $messages);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput(); 
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors(),
+            ], 422);
         }
 
-        $user->update([
-            'email' => $request->email,
-        ]);
+        $user->update(['email' => $request->email]);
+        $userMeta->update($request->only([
+            'nome',
+            'cognome',
+            'indirizzo',
+            'cap',
+            'citta',
+            'provincia',
+            'nazione_id',
+            'cellulare'
+        ]));
 
-        $user = User::findOrFail($id);
-        $userMeta = $user->userMeta;
-
-        $userMeta->update([
-            'nome' => $request->nome,
-            'cognome' => $request->cognome,
-            'indirizzo' => $request->indirizzo,
-            'cap' => $request->cap,
-            'citta' => $request->citta,
-            'provincia' => $request->provincia,
-            'nazione_id' => $request->nazione_id,
-            'cellulare' => $request->cellulare,
-        ]);
-
-        return redirect()->route('user.profile', $user->id)->with('success', 'Profilo modificato con successo!');
+        return response()->json(['message' => 'Profilo modificato con successo!']);
     }
 
     public function destroy($id)
@@ -119,8 +112,6 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('home')->with('success', 'Utente eliminato con successo!');
+        return response()->json(['message' => 'Utente eliminato con successo!']);
     }
-
-
 }
