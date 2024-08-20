@@ -8,7 +8,6 @@ use App\Models\UserMeta;
 use App\Models\Country;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
