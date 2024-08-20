@@ -18,4 +18,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserMeta::class);
     }
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class, 'id_utente');
+    }
 }
