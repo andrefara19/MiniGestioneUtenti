@@ -39,6 +39,7 @@ class RegisterController extends Controller
             'password.min' => 'La password deve contenere almeno 8 caratteri',
             'password.required' => 'La password non può essere vuota',
 
+            'email.email' => 'Immettere una email valida',
             'email.regex' => 'Immettere una email valida',
             'email.unique' => 'L\'email è già stata utilizzata',
             'email.required' => 'L\'email non può essere vuota',
@@ -80,7 +81,7 @@ class RegisterController extends Controller
             'citta' => 'nullable|string|max:255',
             'provincia' => 'nullable|string|max:255',
             'nazione_id' => 'required|exists:countries,id',
-            'email' => 'required|string|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/|max:255|unique:users',
+            'email' => 'required|string|email|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ], $messages);
 

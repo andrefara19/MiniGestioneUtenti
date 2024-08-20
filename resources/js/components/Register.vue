@@ -44,7 +44,7 @@
                                 <div v-if="errori.nazione_id" class="text-danger">{{ errori.nazione_id[0] }}</div>
                             </div>
                             <div class="mb-3">
-                                <input class="form-control" type="tel" id="cellulare" v-model="cellulare" placeholder="Cellulare *">
+                                <input class="form-control" id="cellulare" v-model="cellulare" placeholder="Cellulare *">
                                 <div v-if="errori.cellulare" class="text-danger">{{ errori.cellulare[0] }}</div>
                             </div>
                             <div class="mb-3">

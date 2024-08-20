@@ -48,6 +48,7 @@ class UserController extends Controller
             'cognome.regex_space' => 'Nel cognome, dopo lo spazio, serve un carattere',
             'cognome.required' => 'Il cognome non può essere vuoto',
 
+            'email.email' => 'Immettere una email valida',
             'email.regex' => 'Immettere una email valida',
             'email.unique' => 'L\'email è già stata utilizzata!',
             'email.required' => 'L\'email non può essere vuota',
