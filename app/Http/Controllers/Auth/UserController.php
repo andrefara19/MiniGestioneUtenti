@@ -48,6 +48,7 @@ class UserController extends Controller
             'cognome.regex_space' => 'Nel cognome, dopo lo spazio, serve un carattere',
             'cognome.required' => 'Il cognome non può essere vuoto',
 
+            'email.email' => 'Immettere una email valida',
             'email.regex' => 'Immettere una email valida',
             'email.unique' => 'L\'email è già stata utilizzata!',
             'email.required' => 'L\'email non può essere vuota',
@@ -87,7 +88,7 @@ class UserController extends Controller
             'citta' => 'nullable|string|max:255',
             'provincia' => 'nullable|string|max:255',
             'nazione_id' => 'nullable|exists:countries,id',
-            'email' => 'required|string|email|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/|max:255|unique:users,email,' . $user->id,
+            'email' => 'required|string|email|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/|max:255|unique:users' . $user->id,
         ], $messages);
 
         if ($validator->fails()) {

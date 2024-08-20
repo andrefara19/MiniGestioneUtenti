@@ -53,12 +53,12 @@
                             </select>
                             <div v-if="errori.nazione_id" class="text-danger">{{ errori.nazione_id[0] }}</div>
                             <div class="mb-3">
-                                <input class="form-control" type="tel" id="cellulare" v-model="formData.cellulare"
+                                <input class="form-control" id="cellulare" v-model="formData.cellulare"
                                     placeholder="Cellulare" :disabled="!canEdit">
                                 <div v-if="errori.cellulare" class="text-danger">{{ errori.cellulare[0] }}</div>
                             </div>
                             <div class="mb-3">
-                                <input class="form-control" type="email" id="email" v-model="formData.email"
+                                <input class="form-control" id="email" v-model="formData.email"
                                     placeholder="Email" :disabled="!canEdit">
                                 <div v-if="errori.email" class="text-danger">{{ errori.email[0] }}</div>
                             </div>
@@ -76,7 +76,6 @@
         </div>
     </div>
 </template>
-
 
 <script>
 import axios from 'axios';
