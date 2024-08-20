@@ -12,14 +12,20 @@ class Event extends Model
     protected $table = 'events';
 
     protected $fillable = [
-        'user_id',
-        'nome',
-        'cognome',
+        'titolo',
+        'luogo',
         'indirizzo',
-        'cap',
-        'citta',
+        'comune',
         'provincia',
-        'nazione_id',
-        'cellulare',
-    ]
+        'data_inizio',
+        'data_fine',
+        'posti',
+        'ospiti',
+        'gratuito',
+    ];
+
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class, 'id_evento');
+    }
 }
