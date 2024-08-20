@@ -23,7 +23,7 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
-        $userId = $this->route('id');  // Ottiene l'ID dell'utente dalla route.
+        $userId = $this->route('id');
         $user = User::findOrFail($userId);
         $userMetaId = $user->userMeta->id;
 

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 
 
@@ -16,27 +16,8 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {   
-        $messages = [
-            'email.required' => 'Immettere una email',
-            'email.regex' => 'Immettere una email valida',
-
-            'password.required' => 'Immettere una password',
-        ];
-
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|string|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/|max:255',
-            'password' => 'required|string',
-        ], $messages);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'errors' => $validator->errors(),
-            ], 422);
-        }
-
         $user = User::where('email', $request->email)->first();
         if (!$user) {
             return response()->json([
