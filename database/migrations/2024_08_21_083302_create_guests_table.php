@@ -11,22 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('subscriptions', function (Blueprint $table) {
+        Schema::create('guests', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('evento_id');
+            $table->unsignedBigInteger('subscription_id');
             $table->string('nome');
             $table->string('cognome');
             $table->string('codice_fiscale');
             $table->string('email');
-            $table->string('cellulare');
-            $table->integer('accompagnatori');
-            $table->boolean('presenze');
-            $table->boolean('pagato')->default(false);
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('evento_id')->references('id')->on('events');
+            $table->foreign('subscription_id')->references('id')->on('subscriptions');
         });
     }
 
@@ -35,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('subscriptions');
+        Schema::dropIfExists('guests');
     }
 };

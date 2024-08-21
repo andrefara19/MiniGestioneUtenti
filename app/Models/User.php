@@ -20,6 +20,6 @@ class User extends Authenticatable
     }
     public function subscriptions()
     {
-        return $this->hasMany(Subscription::class, 'user_id');
+        return $this->hasMany(Subscription::class); //user_id
     }
 }
