@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('cellulare');
             $table->integer('accompagnatori');
-            $table->integer('presenze');
+            $table->boolean('presenze');
             $table->boolean('pagato')->default(false);
             $table->timestamps();
 
