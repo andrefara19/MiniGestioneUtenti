@@ -46,6 +46,27 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/area_personale/') }}">Lista utenti</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/eventi/') }}">Lista eventi</a>
+                    </li>
+                    @endif
+                    @if(request()->routeIs('home'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/eventi/') }}">Lista eventi</a>
+                    </li>
+                    @endif
+                    @if(request()->routeIs('event.index'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/area_personale/') }}">Lista utenti</a>
+                    </li>
+                    @endif
+                    @if(request()->routeIs('event.edit'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/area_personale/') }}">Lista utenti</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/eventi/') }}">Lista eventi</a>
+                    </li>
                     @endif
                     @endguest
                 </ul>
