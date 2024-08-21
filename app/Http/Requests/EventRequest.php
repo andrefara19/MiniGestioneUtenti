@@ -22,34 +22,57 @@ class EventRequest extends FormRequest
     public function rules(): array
     {
         return [
-           'titolo' => [
+            'titolo' => [
                 'required',
                 'string',
                 'max:255',
                 'regex:/^[^\s].*/',
             ],
-            'luogo' => [
+            'comune' => [
                 'required',
                 'string',
                 'max:255',
-                'regex:/^[^\s][A-Za-zÀ-ÿ\s]*[^\s]$/',
-                'regex:/^(?!.*[0-9!@#\$%\^&\*\(\)_\+={}\[\]\|\\:;\"\'<>,\.\?\/~`]).*$/'
+                'regex:/^[^\s][A-Za-zÀ-ÿ\s]*[^\s\W]$/',
+            ],
+            'provincia' => [
+                'nullable',
+                'string',
+                'max:255',
+                'regex:/^[^\s][A-Za-zÀ-ÿ\s]*[^\s\W]$/',
             ],
             'indirizzo' => [
                 'required',
                 'string',
-                'max:10',
-                'min:10',
-                'regex:/^[0-9]{10}$/',
-                'unique:user_meta'
+                'max:255',
+                'regex:/^[^\s].*/',
             ],
-            'indirizzo' => 'nullable|string|max:255',
-            'cap' => 'nullable|string|max:20',
-            'citta' => 'nullable|string|max:255',
-            'provincia' => 'nullable|string|max:255',
-            'nazione_id' => 'required|exists:countries,id',
-            'email' => 'required|string|email|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed', 
+            'data_inizio' => [
+                'required',
+                'date',
+                'after:now',
+                function ($attribute, $value, $fail) {
+                    if (strtotime($value) - time() < 1800) {
+                        $fail('La data di inizio deve essere almeno 30 minuti nel futuro.');
+                    }
+                },
+            ],
+            'data_fine' => [
+                'required',
+                'date',
+                'after:start_date',
+                function ($attribute, $value, $fail) {
+                    $start_date = $this->input('data_inizio');
+                    $end_date = $value;
+
+
+                    if (strtotime($end_date) - strtotime($start_date) < 1800) {
+                        $fail('La data di fine deve essere almeno 30 minuti successiva alla data di inizio.');
+                    }
+                },
+            ],
+            'posti' => 'required|integer|max:250',
+            'ospiti' => 'required|integer|max:250',
+            'gratuito' => 'required|boolean',
         ];
     }
 
@@ -61,42 +84,37 @@ class EventRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'nome.regex_start' => 'Il nome non può iniziare con spazio',
-            'nome.regex' => 'Nel nome sono presenti numeri o caratteri speciali',
-            'nome.regex_space' => 'Nel nome, dopo lo spazio, serve un carattere',
-            'nome.required' => 'Il nome non può essere vuoto',
+            'titolo.regex_start' => 'Il titolo non può iniziare con spazio',
+            'titolo.required' => 'Il titolo non può essere vuoto',
 
-            'cognome.regex_start' => 'Il cognome non può iniziare con spazio',
-            'cognome.regex' => 'Nel cognome sono presenti numeri o caratteri speciali',
-            'cognome.regex_space' => 'Nel cognome, dopo lo spazio, serve un carattere',
-            'cognome.required' => 'Il cognome non può essere vuoto',
+            'comune.regex_start' => 'Il comune non può iniziare con spazio',
+            'comune.regex' => 'Nel comune sono presenti numeri o caratteri speciali',
+            'comune.required' => 'Il comune non può essere vuoto',
 
-            'password.min' => 'La password deve contenere almeno 8 caratteri',
-            'password.required' => 'La password non può essere vuota',
+            'provincia.regex_start' => 'La provincia non può iniziare con spazio',
+            'provincia.regex' => 'Nella provincia sono presenti numeri o caratteri speciali',
 
-            'email.email' => 'Immettere una email valida',
-            'email.regex' => 'Immettere una email valida',
-            'email.unique' => 'L\'email è già stata utilizzata',
-            'email.required' => 'L\'email non può essere vuota',
+            'indirizzo.regex_start' => 'L\'indirizzo non può iniziare con spazio',
 
-            'cellulare.unique' => 'Il numero di cellulare è già stato utilizzato',
-            'cellulare.required' => 'Il cellulare non può essere vuoto',
-            'cellulare.max' => 'Il numero di cellulare deve essere di 10 cifre',
-            'cellulare.min' => 'Il numero di cellulare deve essere di 10 cifre',
-            'cellulare.regex' => 'Il numero di cellulare deve contenere solo cifre',
+            'data_inizio.required' => 'La data di inizio è obbligatoria.',
+            'data_inizio.date' => 'La data di inizio deve essere una data valida.',
+            'data_inizio.after' => 'La data di inizio deve essere nel futuro.',
+            'data_inizio.after_or_equal' => 'La data di inizio deve essere almeno 30 minuti nel futuro.',
 
-            'nazione_id.required' => 'La nazione deve essere selezionata'
+            'data_fine.required' => 'La data di fine è obbligatoria.',
+            'data_fine.date' => 'La data di fine deve essere una data valida.',
+            'data_fine.after' => 'La data di fine deve essere successiva alla data di inizio.',
+            'data_fine.after_or_equal' => 'La data di fine deve essere almeno 30 minuti successiva alla data di inizio.',
+
+            'posti.required' => 'Il numero di posti è obbligatorio.',
+            'posti.integer' => 'Il numero di posti deve essere un numero intero.',
+            'posti.max' => 'Il numero di posti non può superare 250.',
+
+            'ospiti.required' => 'Il numero di ospiti è obbligatorio.',
+            'ospiti.integer' => 'Il numero di ospiti deve essere un numero intero.',
+            'ospiti.max' => 'Il numero di ospiti non può superare 250.',
+
+            'gratuito.required' => 'Il campo gratuito è obbligatorio.',
         ];
     }
 }
-
-
-$table->string('luogo');
-$table->string('indirizzo');
-$table->string('comune');
-$table->string('provincia');
-$table->date('data_inizio');
-$table->date('data_fine');
-$table->integer('posti');
-$table->integer('ospiti');
-$table->boolean('gratuito')->default(true);
