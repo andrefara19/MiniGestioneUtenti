@@ -11,17 +11,7 @@ class Subscription extends Model
 
     protected $table = 'subscriptions';
 
-    protected $fillable = [
-        'user_id',
-        'evento_id',
-        'nome',
-        'cognome',
-        'email',
-        'cellulare',
-        'accompagnatori',
-        'presenze',
-        'pagato',
-    ];
+    protected $guarded = [];
 
     public function guests()
     {

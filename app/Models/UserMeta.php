@@ -11,17 +11,7 @@ class UserMeta extends Model
 
     protected $table = 'user_meta'; 
 
-    protected $fillable = [
-        'user_id',
-        'nome',
-        'cognome',
-        'indirizzo',
-        'cap',
-        'citta',
-        'provincia',
-        'nazione_id',
-        'cellulare',
-    ];
+    protected $guarded = [];
 
     public function country()
     {
