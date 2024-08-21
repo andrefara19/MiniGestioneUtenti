@@ -13,5 +13,8 @@ class Guest extends Model
 
     protected $guarded = [];
     
-
+    public function subscription()
+    {
+        return $this->belongsTo(Subscription::class);
+    }
 }
