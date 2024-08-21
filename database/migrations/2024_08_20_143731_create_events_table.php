@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('titolo');
-            $table->string('luogo');
-            $table->string('indirizzo');
             $table->string('comune');
             $table->string('provincia');
+            $table->string('indirizzo');            
             $table->date('data_inizio');
             $table->date('data_fine');
             $table->integer('posti');
