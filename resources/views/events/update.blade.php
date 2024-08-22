@@ -17,7 +17,6 @@
                 <h4>Modifica evento</h4>
             </div>
             <div class="card-body">
-
                 <form action="{{ route('event.update', $event->id) }}" method="POST">
                     @csrf
                     @method('PUT')
@@ -62,41 +61,8 @@
                         <label for="gratuito">Gratuito:</label>
                         <input type="checkbox" id="gratuito" name="gratuito" value="{{ $event->gratuito}}">
                     </div>
-
-                </form>
-
-                <!-- <form method="POST" action="{{ route('event.store') }}">
-                    @csrf
-                    <div class="mb-3">
-                        <input class="form-control" type="text" name="titolo" placeholder="Titolo *" value="{{ $event->data_inizio }}">
-                    </div>
-                    <div class="mb-3">
-                        <input class="form-control" type="text" name="comune" placeholder="Comune *">
-                    </div>
-                    <div class="mb-3">
-                        <input class="form-control" type="text" name="provincia" placeholder="Provincia">
-                    </div>
-                    <div class="mb-3">
-                        <input class="form-control" type="text" name="indirizzo" placeholder="Indirizzo *">
-                    </div>
-                    <div class="mb-3">
-                        <input class="form-control" type="date" id="data_inizio" name="data_inizio">
-                    </div>
-                    <div class="mb-3">
-                        <input class="form-control" type="date" id="data_fine" name="data_fine">
-                    </div>
-                    <div class="mb-3">
-                        <input class="form-control" type="text" name="posti" placeholder="Posti *">
-                    </div>
-                    <div class="mb-3">
-                        <input class="form-control" type="text" name="ospiti" placeholder="Ospiti *">
-                    </div>
-                    <div class="mb-3"> Gratuito
-                        <input type="checkbox" name="gratuito">
-                    </div> -->
-
-                <button class="btn btn-primary mt-3" style="margin-right: 10px;" type="submit">Aggiorna evento</button>
-                <button class="btn btn-secondary mt-3" type="reset">Elimina evento</button>
+                    <button class="btn btn-primary mt-3" style="margin-right: 10px;" type="submit">Aggiorna evento</button>
+                    <button class="btn btn-secondary mt-3" type="reset">Elimina evento</button>
                 </form>
             </div>
         </div>

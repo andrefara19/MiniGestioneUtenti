@@ -36,10 +36,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/utente/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
     Route::get('/eventi', [EventController::class, 'index'])->name('event.index');
+    // Route::get('/eventi/{user_id}', [EventController::class, 'indexUser'])->name('event.index.user');
     Route::get('/eventi/create', [EventController::class, 'create'])->name('event.create');
     Route::post('/eventi/store', [EventController::class, 'store'])->name('event.store');
 
     Route::get('/eventi/{id}', [EventController::class, 'edit'])->name('event.edit');
     Route::put('/eventi/{id}', [EventController::class, 'update'])->name('event.update');
-    Route::delete('/eventi/{id}', [EventController::class, 'delete'])->name('event.delete');
+    Route::delete('/eventi/{id}', [EventController::class, 'destroy'])->name('event.delete');
 });

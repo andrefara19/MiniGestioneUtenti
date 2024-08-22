@@ -16,6 +16,13 @@ class EventController extends Controller
         return view('events.index', compact('events'));
     }
 
+    // public function indexUser($id)
+    // {
+    //     $events = Event::orderBy('data_inizio', 'asc')->get();
+
+    //     return view('events.index', compact('events'));
+    // }
+
     public function create()
     {
         return view('events.create');  
@@ -28,7 +35,7 @@ class EventController extends Controller
         
         Event::create($inputs);
         
-        return redirect()->route('events.index')->with('message', 'Event created successfully.');
+        return redirect()->route('event.index')->with('message', 'Event created successfully.');
     }
 
     public function edit($id)
@@ -47,7 +54,7 @@ class EventController extends Controller
         $event->update($inputs);
 
         if ($event->update($inputs)) {
-            return redirect()->route('events.index')->with('message', 'Successfully updated');
+            return redirect()->route('event.index')->with('message', 'Successfully updated');
         } else {
             return back()->with('error', 'Failed to update');
         }
@@ -58,15 +65,9 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
 
         if ($event->delete()) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Evento eliminato con successo!',
-            ], 200);
+            return redirect()->route('event.index')->with('message', 'Successfully deleted');
         } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'Failed to delete the event!',
-            ], 500);
+            return back()->with('error', 'Failed to delete');
         }
     }
 }
