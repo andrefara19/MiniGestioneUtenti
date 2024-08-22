@@ -16,12 +16,14 @@ class EventController extends Controller
         return view('events.index', compact('events'));
     }
 
-    // public function indexUser($id)
-    // {
-    //     $events = Event::orderBy('data_inizio', 'asc')->get();
+    public function myEvents($user_id)
+    {
+        $events = Event::where('user_id', $user_id)
+            ->orderBy('data_inizio', 'asc')
+            ->get();
 
-    //     return view('events.index', compact('events'));
-    // }
+        return view('events.index', compact('events', 'user_id'));
+    }
 
     public function create()
     {

@@ -10,6 +10,9 @@
 <h2 style="text-align: center; margin-bottom: 30px">Elenco degli eventi:</h2>
 <table class="table table-striped mt-5">
 
+<a href="{{ route('event.create') }}" class="btn btn-info mt-3" style="background-color: silver; margin-right:10px;">Crea nuovo evento</a>
+<a href="{{ route('event.index.user', ['user_id' => Auth::id()]) }}" class="btn btn-light mt-3" style="background-color: #D6EAF8; margin-right:10px;">Mostra i tuoi eventi</a>
+<a href="{{ route('event.index', ['user_id' => Auth::id()]) }}" class="btn btn-light mt-3" style="background-color: #D5F5E3; margin-right:10px;">Mostra tutti gli eventi</a>
     <tr>
         <th>Data inizio</th>
         <th>Data fine</th>
@@ -49,6 +52,5 @@
     </tr>
     @endforeach
 </table>
-<a href="{{ route('event.create') }}" class="btn btn-info mt-3" style="background-color: silver; margin-right:10px;">Crea nuovo evento</a>
-<a href="{{ route('event.create') }}" class="btn btn-light mt-3" style="background-color: skyblue; margin-right:10px;">Filtra i tuoi eventi</a>
+
 @endsection

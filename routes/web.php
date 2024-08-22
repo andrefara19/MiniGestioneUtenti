@@ -32,14 +32,13 @@ Route::middleware('auth')->group(function () {
     Route::put('/profilo', [ProfileController::class, 'update'])->name('profile.update');
 
     Route::get('/utente/{id}', [UserController::class, 'show'])->name('user.profile');
-    Route::put('/utente/{id}', [UserController::class, 'update'])->name('user.update'); 
+    Route::put('/utente/{id}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/utente/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
-    Route::get('/eventi', [EventController::class, 'index'])->name('event.index');
-    // Route::get('/eventi/{user_id}', [EventController::class, 'indexUser'])->name('event.index.user');
     Route::get('/eventi/create', [EventController::class, 'create'])->name('event.create');
+    Route::get('/eventi', [EventController::class, 'index'])->name('event.index');
+    Route::get('/eventi/user/{user_id}', [EventController::class, 'myEvents'])->name('event.index.user');
     Route::post('/eventi/store', [EventController::class, 'store'])->name('event.store');
-
     Route::get('/eventi/{id}', [EventController::class, 'edit'])->name('event.edit');
     Route::put('/eventi/{id}', [EventController::class, 'update'])->name('event.update');
     Route::delete('/eventi/{id}', [EventController::class, 'destroy'])->name('event.delete');
