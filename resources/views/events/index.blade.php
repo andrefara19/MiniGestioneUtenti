@@ -10,9 +10,9 @@
 <h2 style="text-align: center; margin-bottom: 30px">Elenco degli eventi:</h2>
 <table class="table table-striped mt-5">
 
-<a href="{{ route('event.create') }}" class="btn btn-info mt-3" style="background-color: silver; margin-right:10px;">Crea nuovo evento</a>
-<a href="{{ route('event.index.user', ['user_id' => Auth::id()]) }}" class="btn btn-light mt-3" style="background-color: #D6EAF8; margin-right:10px;">Mostra i tuoi eventi</a>
-<a href="{{ route('event.index', ['user_id' => Auth::id()]) }}" class="btn btn-light mt-3" style="background-color: #D5F5E3; margin-right:10px;">Mostra tutti gli eventi</a>
+    <a href="{{ route('event.create') }}" class="btn btn-info mt-3" style="background-color: silver; margin-right:10px;">Crea nuovo evento</a>
+    <a href="{{ route('event.index.user', ['user_id' => Auth::id()]) }}" class="btn btn-light mt-3" style="background-color: #D6EAF8; margin-right:10px;">Mostra i tuoi eventi</a>
+    <a href="{{ route('event.index', ['user_id' => Auth::id()]) }}" class="btn btn-light mt-3" style="background-color: #D5F5E3; margin-right:10px;">Mostra tutti gli eventi</a>
     <tr>
         <th>Data inizio</th>
         <th>Data fine</th>
@@ -35,8 +35,13 @@
         <td>{{ $event->titolo }}</td>
         <td>{{ $event->posti }}</td>
         <td>{{ $event->ospiti }}</td>
-        <td>{{ $event->gratuito }}</td>
+        @if($event->gratuito)
+            <td><i class="fa-solid fa-check"></i></td>
+        @else
+        <td></td>
+        @endif
         <td>
+            @if(Auth::id() == $event->user_id)
             <a href="{{ route('event.edit', $event->id) }}">
                 <i class="fa-solid fa-pen" style="color: black; padding-right: 20px"></i>
             </a>
@@ -47,6 +52,7 @@
                     <i class="fa-solid fa-trash" style="color: black;"></i>
                 </button>
             </form>
+            @endif
         </td>
 
     </tr>

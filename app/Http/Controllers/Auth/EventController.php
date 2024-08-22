@@ -27,17 +27,20 @@ class EventController extends Controller
 
     public function create()
     {
-        return view('events.create');  
+        $user = Auth::user(); 
+        $isadmin = $user ? $user->isadmin : false;
+
+        return view('events.create', compact('isadmin'));
     }
 
     public function store(EventRequest $request)
     {
         $inputs = $request->validated();
-        $inputs['gratuito'] = $request->get('gratuito') == 'on';
+        $inputs['gratuito'] = $request->has('gratuito') ? 1 : 0;
         $inputs['user_id'] = Auth::id();
-        
+
         Event::create($inputs);
-        
+
         return redirect()->route('event.index')->with('message', 'Event created successfully.');
     }
 
@@ -52,7 +55,7 @@ class EventController extends Controller
     {
         $event = Event::findOrFail($id);
         $inputs = $request->validated();
-        $inputs['gratuito'] = $request->get('gratuito') == 'on';
+        $inputs['gratuito'] = $request->has('gratuito') ? 1 : 0;
         $inputs['user_id'] = Auth::id();
 
         $event->update($inputs);
