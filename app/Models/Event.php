@@ -17,4 +17,8 @@ class Event extends Model
     {
         return $this->hasMany(Subscription::class, 'evento_id');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Requests\EventRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Event;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -32,6 +32,7 @@ class EventController extends Controller
     {
         $inputs = $request->validated();
         $inputs['gratuito'] = $request->get('gratuito') == 'on';
+        $inputs['user_id'] = Auth::id();
         
         Event::create($inputs);
         
@@ -49,7 +50,8 @@ class EventController extends Controller
     {
         $event = Event::findOrFail($id);
         $inputs = $request->validated();
-        $inputs['gratuito'] = $request->get('gratuito') == 'on';;
+        $inputs['gratuito'] = $request->get('gratuito') == 'on';
+        $inputs['user_id'] = Auth::id();
 
         $event->update($inputs);
 
