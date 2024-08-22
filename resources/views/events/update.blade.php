@@ -22,47 +22,38 @@
                     @method('PUT')
 
                     <div class="mb-3">
-                        <label for="titolo">Titolo:</label>
-                        <input type="text" id="titolo" name="titolo" value="{{ $event->titolo }}">
+                        <input class= "form-control" type="text" id="titolo" name="titolo" value="{{ $event->titolo }}" placeholder="Titolo *">
                     </div>
 
                     <div class="mb-3">
-                        <label for="comune">Comune:</label>
-                        <input type="text" id="comune" name="comune" value="{{ $event->comune }}">
+                        <input class= "form-control" type="text" id="comune" name="comune" value="{{ $event->comune }}" placeholder="Comune *">
                     </div>
 
                     <div class="mb-3">
-                        <label for="provincia">Provincia:</label>
-                        <input type="text" id="provincia" name="provincia" value="{{ $event->provincia }}">
+                        <input class= "form-control" type="text" id="provincia" name="provincia" value="{{ $event->provincia }}" placeholder="Provincia *">
                     </div>
 
                     <div class="mb-3">
-                        <label for="indirizzo">Indirizzo:</label>
-                        <input type="text" id="indirizzo" name="indirizzo" value="{{ $event->indirizzo }}">
+                        <input class= "form-control" type="text" id="indirizzo" name="indirizzo" value="{{ $event->indirizzo }}" placeholder="Indirizzo *">
                     </div>
 
                     <div class="mb-3">
-                        <label for="data_inizio">Data Inizio:</label>
-                        <input type="date" id="data_inizio" name="data_inizio" value="{{ $event->data_inizio }}">
+                        <input class= "form-control" type="date" id="data_inizio" name="data_inizio" value="{{ $event->data_inizio }}">
                     </div>
                     <div class="mb-3">
-                        <label for="data_fine">Data Fine:</label>
-                        <input type="date" id="data_fine" name="data_fine" value="{{ $event->data_fine }}">
+                        <input class= "form-control" type="date" id="data_fine" name="data_fine" value="{{ $event->data_fine }}">
                     </div>
                     <div class="mb-3">
-                        <label for="posti">Posti:</label>
-                        <input type="text" id="posti" name="posti" value="{{ $event->posti}}">
+                        <input class= "form-control" type="text" id="posti" name="posti" value="{{ $event->posti}}" placeholder="Posti *">
                     </div>
                     <div class="mb-3">
-                        <label for="ospiti">Ospiti:</label>
-                        <input type="text" id="ospiti" name="ospiti" value="{{ $event->ospiti}}">
+                        <input class= "form-control" type="text" id="ospiti" name="ospiti" value="{{ $event->ospiti}}" placeholder="Ospiti *">
                     </div>
                     <div class="mb-3">
                         <label for="gratuito">Gratuito:</label>
                         <input type="checkbox" id="gratuito" name="gratuito" value="{{ $event->gratuito}}">
                     </div>
                     <button class="btn btn-primary mt-3" style="margin-right: 10px;" type="submit">Aggiorna evento</button>
-                    <button class="btn btn-secondary mt-3" type="reset">Elimina evento</button>
                 </form>
             </div>
         </div>

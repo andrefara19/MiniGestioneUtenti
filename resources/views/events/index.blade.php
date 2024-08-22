@@ -8,7 +8,6 @@
 
 @section('content')
 <h2 style="text-align: center; margin-bottom: 30px">Elenco degli eventi:</h2>
-<a href="{{ route('event.create') }}">Crea nuovo evento</a>
 <table class="table table-striped mt-5">
 
     <tr>
@@ -48,7 +47,8 @@
         </td>
 
     </tr>
-
     @endforeach
 </table>
+<a href="{{ route('event.create') }}" class="btn btn-info mt-3" style="background-color: silver; margin-right:10px;">Crea nuovo evento</a>
+<a href="{{ route('event.create') }}" class="btn btn-light mt-3" style="background-color: skyblue; margin-right:10px;">Filtra i tuoi eventi</a>
 @endsection
