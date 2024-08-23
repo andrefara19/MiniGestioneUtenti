@@ -9,9 +9,9 @@
 @section('content')
 
 @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
 @endif
 <div class="row">
     <div class="col-sm-12 col-md-4"> </div>
@@ -53,11 +53,14 @@
                     <div class="mb-3">
                         <input class="form-control" type="text" id="ospiti" name="ospiti" value="{{ $event->ospiti}}" placeholder="Ospiti *">
                     </div>
-                    <div class="mb-3">
-                        <label for="gratuito">Gratuito:</label>
-                        <input type="checkbox" id="gratuito" name="gratuito" value="{{ $event->gratuito}}">
+                    <div class="mb-3 mt-4">
+                        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                            <input type="checkbox" class="btn-check" id="gratuito" name="gratuito" value="1" autocomplete="off"
+                                {{ $event->gratuito ? 'checked' : '' }}>
+                            <label class="btn btn-outline-primary" for="gratuito">Gratuito</label>
+                        </div>
                     </div>
-                    <button class="btn btn-primary mt-3" style="margin-right: 10px;" type="submit">Aggiorna evento</button>
+                    <button class="btn btn-success mt-3" style="margin-right: 10px;" type="submit">Aggiorna evento</button>
                 </form>
             </div>
         </div>

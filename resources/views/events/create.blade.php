@@ -9,14 +9,14 @@
 @section('content')
 
 @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-    <script>
-        setTimeout(function() {
-            window.location.href = "{{ route('event.index') }}";
-        }, 1500); 
-    </script>
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+<script>
+    setTimeout(function() {
+        window.location.href = "{{ route('event.index') }}";
+    }, 1500);
+</script>
 @endif
 <div class="row">
     <div class="col-sm-12 col-md-4"> </div>
@@ -58,13 +58,15 @@
                     </div>
                     <div class="mb-3">
                         <input class="form-control" type="text" name="ospiti" placeholder="Ospiti *">
-                        <div class="text-danger">{{ $errors->first('ospiti') }}</div>
+                        <div class="text-danger">{{ $errors->first('titolo') }}</div>
                     </div>
-                    <div class="mb-3"> Gratuito
-                        <input type="checkbox" name="gratuito">
+                    <div class="mb-3 mt-4">
+                        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                            <input type="checkbox" class="btn-check" id="gratuito" name="gratuito" value="1" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="gratuito">Gratuito</label>
+                        </div>
                     </div>
-
-                    <button class="btn btn-primary mt-3" style="margin-right: 10px;" type="submit">Crea evento</button>
+                    <button class="btn btn-success mt-3" style="margin-right: 10px;" type="submit">Crea evento</button>
                     <button class="btn btn-secondary mt-3" type="reset">Reset</button>
                 </form>
             </div>
