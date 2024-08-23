@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <input class="form-control" type="text" id="provincia" name="provincia" value="{{ $event->provincia }}" placeholder="Provincia *">
+                        <input class="form-control" type="text" id="provincia" name="provincia" value="{{ $event->provincia }}" placeholder="Provincia">
                     </div>
 
                     <div class="mb-3">
