@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/utente/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
     Route::get('/eventi/create', [EventController::class, 'create'])->name('event.create');
-    Route::get('/eventi', [EventController::class, 'index'])->name('event.index');
+    Route::get('/eventi', [EventController::class, 'allEvents'])->name('event.index');
     Route::get('/eventi/user/{user_id}', [EventController::class, 'myEvents'])->name('event.index.user');
     Route::post('/eventi/store', [EventController::class, 'store'])->name('event.store');
     Route::get('/eventi/{id}', [EventController::class, 'edit'])->name('event.edit');

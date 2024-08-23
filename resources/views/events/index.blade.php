@@ -41,7 +41,7 @@
         <td></td>
         @endif
         <td>
-            @if(Auth::id() == $event->user_id)
+            @if(Auth::id() == $event->user_id || $isadmin)
             <a href="{{ route('event.edit', $event->id) }}">
                 <i class="fa-solid fa-pen" style="color: black; padding-right: 20px"></i>
             </a>

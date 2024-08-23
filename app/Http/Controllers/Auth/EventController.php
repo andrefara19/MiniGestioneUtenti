@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
-    public function index()
+    public function allEvents()
     {
+        $user = Auth::user();
+        $isadmin = $user->is_admin;
         $events = Event::orderBy('data_inizio', 'asc')->get();
 
-        return view('events.index', compact('events'));
+        return view('events.index', compact('events', 'isadmin'));
     }
 
     public function myEvents($user_id)
@@ -27,10 +29,7 @@ class EventController extends Controller
 
     public function create()
     {
-        $user = Auth::user(); 
-        $isadmin = $user ? $user->isadmin : false;
-
-        return view('events.create', compact('isadmin'));
+        return view('events.create');
     }
 
     public function store(EventRequest $request)
