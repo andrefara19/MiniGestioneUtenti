@@ -48,14 +48,15 @@ class EventRequest extends FormRequest
             ],
             'data_inizio' => [
                 'required',
-                'string',
+                'date',
             ],
             'data_fine' => [
                 'required',
-                'string',
+                'date',
+                'after_or_equal:data_inizio'
             ],
             'posti' => 'required|integer|max:250',
-            'ospiti' => 'required|integer|max:250',
+            'ospiti' => 'required|integer|lte:posti',
         ];
     }
 
@@ -85,6 +86,7 @@ class EventRequest extends FormRequest
             'data_inizio.required' => 'La data di inizio è obbligatoria',
 
             'data_fine.required' => 'La data di fine è obbligatoria',
+            'data_fine.after_or_equal' => 'La data non può essere precedente a quella di inizio',
 
             'posti.required' => 'Il numero di posti è obbligatorio',
             'posti.integer' => 'Il numero di posti deve essere un numero intero',
@@ -92,7 +94,7 @@ class EventRequest extends FormRequest
 
             'ospiti.required' => 'Il numero di ospiti è obbligatorio',
             'ospiti.integer' => 'Il numero di ospiti deve essere un numero intero',
-            'ospiti.max' => 'Il numero di ospiti non può superare 250',
+            'ospiti.lte' => 'Il numero di ospiti superare il numero di posti disponibili',
         ];
     }
 }

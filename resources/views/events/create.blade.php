@@ -58,7 +58,7 @@
                     </div>
                     <div class="mb-3">
                         <input class="form-control" type="text" name="ospiti" placeholder="Ospiti *">
-                        <div class="text-danger">{{ $errors->first('titolo') }}</div>
+                        <div class="text-danger">{{ $errors->first('ospiti') }}</div>
                     </div>
                     <div class="mb-3 mt-4">
                         <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">

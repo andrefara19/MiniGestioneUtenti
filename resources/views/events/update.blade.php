@@ -27,31 +27,38 @@
 
                     <div class="mb-3">
                         <input class="form-control" type="text" id="titolo" name="titolo" value="{{ $event->titolo }}" placeholder="Titolo *">
+                        <div class="text-danger">{{ $errors->first('titolo') }}</div>
                     </div>
 
                     <div class="mb-3">
                         <input class="form-control" type="text" id="comune" name="comune" value="{{ $event->comune }}" placeholder="Comune *">
+                        <div class="text-danger">{{ $errors->first('comune') }}</div>
                     </div>
 
                     <div class="mb-3">
                         <input class="form-control" type="text" id="provincia" name="provincia" value="{{ $event->provincia }}" placeholder="Provincia">
+                        <div class="text-danger">{{ $errors->first('provincia') }}</div>
                     </div>
 
                     <div class="mb-3">
                         <input class="form-control" type="text" id="indirizzo" name="indirizzo" value="{{ $event->indirizzo }}" placeholder="Indirizzo *">
-                    </div>
+                        <div class="text-danger">{{ $errors->first('indirizzo') }}</div>
 
                     <div class="mb-3">
                         <input class="form-control" type="date" id="data_inizio" name="data_inizio" value="{{ $event->data_inizio }}">
+                        <div class="text-danger">{{ $errors->first('data_inizio') }}</div>
                     </div>
                     <div class="mb-3">
                         <input class="form-control" type="date" id="data_fine" name="data_fine" value="{{ $event->data_fine }}">
+                        <div class="text-danger">{{ $errors->first('data_fine') }}</div>
                     </div>
                     <div class="mb-3">
                         <input class="form-control" type="text" id="posti" name="posti" value="{{ $event->posti}}" placeholder="Posti *">
+                        <div class="text-danger">{{ $errors->first('posti') }}</div>
                     </div>
                     <div class="mb-3">
                         <input class="form-control" type="text" id="ospiti" name="ospiti" value="{{ $event->ospiti}}" placeholder="Ospiti *">
+                        <div class="text-danger">{{ $errors->first('ospiti') }}</div>
                     </div>
                     <div class="mb-3 mt-4">
                         <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
