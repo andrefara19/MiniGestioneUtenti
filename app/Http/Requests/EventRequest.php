@@ -94,7 +94,7 @@ class EventRequest extends FormRequest
 
             'ospiti.required' => 'Il numero di ospiti è obbligatorio',
             'ospiti.integer' => 'Il numero di ospiti deve essere un numero intero',
-            'ospiti.lte' => 'Il numero di ospiti superare il numero di posti disponibili',
+            'ospiti.lte' => 'Il numero di ospiti non deve superare il numero di posti disponibili',
         ];
     }
 }
