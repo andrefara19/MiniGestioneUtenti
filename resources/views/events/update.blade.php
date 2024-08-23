@@ -8,7 +8,11 @@
 
 @section('content')
 
-
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 <div class="row">
     <div class="col-sm-12 col-md-4"> </div>
     <div class="col-sm-12 col-md-4" style="margin-bottom: 30px;">
@@ -22,32 +26,32 @@
                     @method('PUT')
 
                     <div class="mb-3">
-                        <input class= "form-control" type="text" id="titolo" name="titolo" value="{{ $event->titolo }}" placeholder="Titolo *">
+                        <input class="form-control" type="text" id="titolo" name="titolo" value="{{ $event->titolo }}" placeholder="Titolo *">
                     </div>
 
                     <div class="mb-3">
-                        <input class= "form-control" type="text" id="comune" name="comune" value="{{ $event->comune }}" placeholder="Comune *">
+                        <input class="form-control" type="text" id="comune" name="comune" value="{{ $event->comune }}" placeholder="Comune *">
                     </div>
 
                     <div class="mb-3">
-                        <input class= "form-control" type="text" id="provincia" name="provincia" value="{{ $event->provincia }}" placeholder="Provincia *">
+                        <input class="form-control" type="text" id="provincia" name="provincia" value="{{ $event->provincia }}" placeholder="Provincia *">
                     </div>
 
                     <div class="mb-3">
-                        <input class= "form-control" type="text" id="indirizzo" name="indirizzo" value="{{ $event->indirizzo }}" placeholder="Indirizzo *">
+                        <input class="form-control" type="text" id="indirizzo" name="indirizzo" value="{{ $event->indirizzo }}" placeholder="Indirizzo *">
                     </div>
 
                     <div class="mb-3">
-                        <input class= "form-control" type="date" id="data_inizio" name="data_inizio" value="{{ $event->data_inizio }}">
+                        <input class="form-control" type="date" id="data_inizio" name="data_inizio" value="{{ $event->data_inizio }}">
                     </div>
                     <div class="mb-3">
-                        <input class= "form-control" type="date" id="data_fine" name="data_fine" value="{{ $event->data_fine }}">
+                        <input class="form-control" type="date" id="data_fine" name="data_fine" value="{{ $event->data_fine }}">
                     </div>
                     <div class="mb-3">
-                        <input class= "form-control" type="text" id="posti" name="posti" value="{{ $event->posti}}" placeholder="Posti *">
+                        <input class="form-control" type="text" id="posti" name="posti" value="{{ $event->posti}}" placeholder="Posti *">
                     </div>
                     <div class="mb-3">
-                        <input class= "form-control" type="text" id="ospiti" name="ospiti" value="{{ $event->ospiti}}" placeholder="Ospiti *">
+                        <input class="form-control" type="text" id="ospiti" name="ospiti" value="{{ $event->ospiti}}" placeholder="Ospiti *">
                     </div>
                     <div class="mb-3">
                         <label for="gratuito">Gratuito:</label>

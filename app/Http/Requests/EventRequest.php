@@ -49,72 +49,50 @@ class EventRequest extends FormRequest
             'data_inizio' => [
                 'required',
                 'string',
-                // 'after:now',
-                // function ($attribute, $value, $fail) {
-                //     if (strtotime($value) - time() < 1800) {
-                //         $fail('La data di inizio deve essere almeno 30 minuti nel futuro.');
-                //     }
-                // },
             ],
             'data_fine' => [
                 'required',
                 'string',
-                // 'after:start_date',
-                // function ($attribute, $value, $fail) {
-                //     $start_date = $this->input('data_inizio');
-                //     $end_date = $value;
-
-
-                //     if (strtotime($end_date) - strtotime($start_date) < 1800) {
-                //         $fail('La data di fine deve essere almeno 30 minuti successiva alla data di inizio.');
-                //     }
-                // },
             ],
             'posti' => 'required|integer|max:250',
             'ospiti' => 'required|integer|max:250',
-            // 'gratuito' => 'required|boolean',
         ];
     }
 
-    // /**
-    //  * Get the custom messages for validation errors.
-    //  *
-    //  * @return array
-    //  */
-    // public function messages(): array
-    // {
-    //     return [
-    //         'titolo.regex_start' => 'Il titolo non può iniziare con spazio',
-    //         'titolo.required' => 'Il titolo non può essere vuoto',
+    /**
+     * Get the custom messages for validation errors.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'titolo.required' => 'Il titolo è obbligatorio',
+            'titolo.regex' => 'Il titolo non può iniziare con uno spazio',
+            'titolo.max' => 'Il titolo non può superare i 255 caratteri',
 
-    //         'comune.regex_start' => 'Il comune non può iniziare con spazio',
-    //         'comune.regex' => 'Nel comune sono presenti numeri o caratteri speciali',
-    //         'comune.required' => 'Il comune non può essere vuoto',
+            'comune.required' => 'Il comune è obbligatorio',
+            'comune.regex' => 'Il comune non può iniziare o terminare con uno spazio e non può contenere numeri o caratteri speciali',
+            'comune.max' => 'Il comune non può superare i 255 caratteri',
 
-    //         'provincia.regex_start' => 'La provincia non può iniziare con spazio',
-    //         'provincia.regex' => 'Nella provincia sono presenti numeri o caratteri speciali',
+            'provincia.regex' => 'La provincia non può iniziare o terminare con uno spazio e non può contenere numeri o caratteri speciali',
+            'provincia.max' => 'La provincia non può superare i 255 caratteri',
 
-    //         'indirizzo.regex_start' => 'L\'indirizzo non può iniziare con spazio',
+            'indirizzo.required' => 'L\'indirizzo è obbligatorio',
+            'indirizzo.regex' => 'L\'indirizzo non può iniziare con uno spazio',
+            'indirizzo.max' => 'L\'indirizzo non può superare i 255 caratteri',
 
-    //         'data_inizio.required' => 'La data di inizio è obbligatoria.',
-    //         'data_inizio.date' => 'La data di inizio deve essere una data valida.',
-    //         'data_inizio.after' => 'La data di inizio deve essere nel futuro.',
-    //         'data_inizio.after_or_equal' => 'La data di inizio deve essere almeno 30 minuti nel futuro.',
+            'data_inizio.required' => 'La data di inizio è obbligatoria',
 
-    //         'data_fine.required' => 'La data di fine è obbligatoria.',
-    //         'data_fine.date' => 'La data di fine deve essere una data valida.',
-    //         'data_fine.after' => 'La data di fine deve essere successiva alla data di inizio.',
-    //         'data_fine.after_or_equal' => 'La data di fine deve essere almeno 30 minuti successiva alla data di inizio.',
+            'data_fine.required' => 'La data di fine è obbligatoria',
 
-    //         'posti.required' => 'Il numero di posti è obbligatorio.',
-    //         'posti.integer' => 'Il numero di posti deve essere un numero intero.',
-    //         'posti.max' => 'Il numero di posti non può superare 250.',
+            'posti.required' => 'Il numero di posti è obbligatorio',
+            'posti.integer' => 'Il numero di posti deve essere un numero intero',
+            'posti.max' => 'Il numero di posti non può superare 250',
 
-    //         'ospiti.required' => 'Il numero di ospiti è obbligatorio.',
-    //         'ospiti.integer' => 'Il numero di ospiti deve essere un numero intero.',
-    //         'ospiti.max' => 'Il numero di ospiti non può superare 250.',
-
-    //         'gratuito.required' => 'Il campo gratuito è obbligatorio.',
-    //     ];
-    // }
+            'ospiti.required' => 'Il numero di ospiti è obbligatorio',
+            'ospiti.integer' => 'Il numero di ospiti deve essere un numero intero',
+            'ospiti.max' => 'Il numero di ospiti non può superare 250',
+        ];
+    }
 }

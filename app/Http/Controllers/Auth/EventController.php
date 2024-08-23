@@ -40,7 +40,7 @@ class EventController extends Controller
 
         Event::create($inputs);
 
-        return redirect()->route('event.index')->with('message', 'Event created successfully.');
+        return back()->with('success', 'Evento creato con successo');
     }
 
     public function edit($id)
@@ -60,7 +60,7 @@ class EventController extends Controller
         $event->update($inputs);
 
         if ($event->update($inputs)) {
-            return redirect()->route('event.index')->with('message', 'Successfully updated');
+            return redirect()->route('event.index')->with('message', 'Evento aggiornato con successo');
         } else {
             return back()->with('error', 'Failed to update');
         }
