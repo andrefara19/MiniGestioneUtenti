@@ -43,17 +43,20 @@
         @endif
         <td>
             @if(Auth::id() == $event->user_id || $isadmin)
-            <a href="{{ route('event.edit', $event->id) }}">
+            <a href="{{ route('event.edit', $event->id) }}" title="Modifica evento">
                 <i class="fa-solid fa-pen" style="color: black; padding-right: 20px"></i>
             </a>
-            <form action="{{ route('event.delete', $event->id) }}" method="POST" style="display: inline;">
+            <form action="{{ route('event.delete', $event->id) }}" title= "Elimina evento" method="POST" style="display: inline;">
                 @csrf
                 @method('DELETE')
                 <button type="submit" onclick="return confirm('Sei sicuro di voler eliminare questo evento?')" style="background: none; border: none; padding: 0; color: black; box-shadow: none;">
-                    <i class="fa-solid fa-trash" style="color: black;"></i>
+                    <i class="fa-solid fa-trash" style="color: black; padding-right: 20px"></i>
                 </button>
             </form>
             @endif
+            <a href="#" title="Partecipa all'evento">
+                <i class="fa-solid fa-ticket" style="color: black; padding-right: 20px"></i>
+            </a>
         </td>
 
     </tr>
