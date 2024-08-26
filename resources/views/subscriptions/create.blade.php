@@ -75,9 +75,10 @@
                                 <input type="email" class="form-control" name="email_accompagnatore_2" placeholder="Email *">
                             </div>
                         </div>
-    
+                        <button class="btn btn-success mt-3" style="margin-right: 10px;" type="submit">Crea evento</button>
+                        <button class="btn btn-secondary mt-3" type="reset">Reset</button>
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary">Iscriviti</button>
+                            
                         </div>
                     </form>
                 </div>
