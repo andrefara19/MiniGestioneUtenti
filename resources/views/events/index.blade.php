@@ -54,7 +54,7 @@
                 </button>
             </form>
             @endif
-            <a href="{{ route('subscriptions.create', Auth::user()->id) }}" title="Partecipa all'evento">
+            <a href="{{ route('subscriptions.create', $event->id) }}" title="Partecipa all'evento">
                 <i class="fa-solid fa-ticket" style="color: black; padding-right: 20px"></i>
             </a>
         </td>

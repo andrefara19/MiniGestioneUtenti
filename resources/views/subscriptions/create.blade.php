@@ -15,7 +15,7 @@
                 <h4>Iscriviti</h4>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('event.store') }}">
+                <form method="POST" action="{{ route('subscriptions.store', $event->id) }}">
                     @csrf
                     <div class="mb-3">
                         <input class="form-control" type="text" name="nome" value= {{ $nome }} placeholder="Nome *">
