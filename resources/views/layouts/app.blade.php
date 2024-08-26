@@ -42,46 +42,30 @@
                             @csrf
                         </form>
                     </li>
-                    @if(request()->routeIs('profile.index') || request()->routeIs('user.profile'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/area_personale/') }}">Lista utenti</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/eventi/') }}">Lista eventi</a>
-                    </li>
-                    @endif
-                    @if(request()->routeIs('home'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/eventi/') }}">Lista eventi</a>
-                    </li>
-                    @endif
-                    @if(request()->routeIs('event.index'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/area_personale/') }}">Lista utenti</a>
-                    </li>
-                    @endif
-                    @if(request()->routeIs('event.edit'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/area_personale/') }}">Lista utenti</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/eventi/') }}">Lista eventi</a>
-                    </li>
-                    @endif
-                    @if(request()->routeIs('event.create'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/area_personale/') }}">Lista utenti</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/eventi/') }}">Lista eventi</a>
-                    </li>
-                    @endif
-                    @if(request()->routeIs('event.index.user'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/area_personale/') }}">Lista utenti</a>
-                    </li>
-                    @endif
                     @endguest
+
+                    @php
+                        $routes_utenti_eventi = ['profile.index', 'user.profile', 'event.edit', 'event.create', 'subscriptions.create'];
+                        $routes_eventi = ['home'];
+                        $routes_utenti = ['event.index', 'event.index.user'];
+                    @endphp
+                    @if (in_array(request()->route()->getName(), $routes_utenti_eventi))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/area_personale/') }}">Lista utenti</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/eventi/') }}">Lista eventi</a>
+                    </li>
+                    @endif
+                    @if (in_array(request()->route()->getName(), $routes_eventi))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/eventi/') }}">Lista eventi</a>
+                    </li>
+                    @endif
+                    @if (in_array(request()->route()->getName(), $routes_utenti))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/area_personale/') }}">Lista utenti</a>
+                    @endif
                 </ul>
             </div>
         </div>
