@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Requests\SubscriptionRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Subscription;
-use App\Models\Guest;
-use App\Models\User;
 use App\Models\Event;
+use App\Models\Guest;
 use Illuminate\Support\Facades\Auth;
 
 class SubscriptionController extends Controller
@@ -28,7 +27,7 @@ class SubscriptionController extends Controller
 
     public function store(SubscriptionRequest $request, $id)
     {
-        $inputs = $request->validated();
+        $inputs = $request->all();
         $event = Event::findOrFail($id); 
 
         $subscription_inputs = [
@@ -37,37 +36,29 @@ class SubscriptionController extends Controller
             'codice_fiscale' => $inputs['codice_fiscale'],
             'email' => $inputs['email'],
             'cellulare' => $inputs['cellulare'],
-            'accompagnatori' => $request->input('accompagnatori', 0), 
+            'accompagnatori' => $inputs['accompagnatori'] ?? 0, 
             'user_id' => Auth::id(),
             'evento_id' => $event->id, 
         ];
-
+           
         $subscription = Subscription::create($subscription_inputs);
+        
+        $num_accompagnatori = intval($request->input('accompagnatori'));
+        $guest_inputs= [];
 
-        $num_accompagnatori = $request->input('accompagnatori', 0);
-
-        if ($num_accompagnatori >= 1) {
-            $guest_inputs_1 = [
-                'nome' => $inputs['nome_accompagnatore_1'],
-                'cognome' => $inputs['cognome_accompagnatore_1'],
-                'codice_fiscale' => $inputs['cf_accompagnatore_1'],
-                'email' => $inputs['email_accompagnatore_1'],
-                'subscription_id' => $subscription->id, 
-            ];
-            Guest::create($guest_inputs_1);
+        if ($num_accompagnatori > 0) {
+            for ($i = 1; $i <= $num_accompagnatori; $i++) {
+                $guest_inputs[] = [
+                    'nome' => $inputs["nome_accompagnatore_$i"],
+                    'cognome' => $inputs["cognome_accompagnatore_$i"],
+                    'codice_fiscale' => $inputs["cf_accompagnatore_$i"],
+                    'email' => $inputs["email_accompagnatore_$i"],
+                    'subscription_id' => $subscription->id, 
+                ];
+            }
+            Guest::insert($guest_inputs);         
         }
 
-        if ($num_accompagnatori == 2) {
-            $guest_inputs_2 = [
-                'nome' => $inputs['nome_accompagnatore_2'],
-                'cognome' => $inputs['cognome_accompagnatore_2'],
-                'codice_fiscale' => $inputs['cf_accompagnatore_2'],
-                'email' => $inputs['email_accompagnatore_2'],
-                'subscription_id' => $subscription->id, 
-            ];
-            Guest::create($guest_inputs_2);
-        }
-
-        return back()->with('success', 'Iscrizione all\'evento creata con successo');
+         return back()->with('success', 'Iscrizione all\'evento creata con successo');
     }
 }

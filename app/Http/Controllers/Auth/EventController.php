@@ -34,7 +34,7 @@ class EventController extends Controller
 
     public function store(EventRequest $request)
     {
-        $inputs = $request->validated();
+        $inputs = $request->all(); 
         $inputs['gratuito'] = $request->has('gratuito') ? 1 : 0;
         $inputs['user_id'] = Auth::id();
 
@@ -65,7 +65,7 @@ class EventController extends Controller
             return back()->with('error', 'Failed to update');
         }
     }
-
+    
     public function destroy($id)
     {
         $event = Event::findOrFail($id);

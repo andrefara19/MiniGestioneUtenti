@@ -22,7 +22,7 @@ class SubscriptionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nome' => 'required'
         ];
     }
 }
