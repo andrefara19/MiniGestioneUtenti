@@ -11,6 +11,7 @@
     @yield('extra-css')
     @vite('resources/js/app.js')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
 </head>
 
 <body class="body" style="background-color: #1A3A5F; color: #D1D1D1">

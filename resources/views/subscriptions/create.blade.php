@@ -60,16 +60,20 @@
                             <div id="accompagnatore" v-for="accompagnatore in accompagnatori">
                                 <h5 style="margin-bottom: 20px">Accompagnatore </h5>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" v-model="accompagnatore.nome_accompagnatore" placeholder="Nome">
+                                    <input type="text" class="form-control" v-model="accompagnatore.nome_accompagnatore"
+                                        placeholder="Nome">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" v-model="accompagnatore.cognome_accompagnatore" placeholder="Cognome">
+                                    <input type="text" class="form-control"
+                                        v-model="accompagnatore.cognome_accompagnatore" placeholder="Cognome">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" v-model="accompagnatore.cf_accompagnatore" placeholder="Codice Fiscale *">
+                                    <input type="text" class="form-control" v-model="accompagnatore.cf_accompagnatore"
+                                        placeholder="Codice Fiscale *">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="email" class="form-control" v-model="accompagnatore.email_accompagnatore" placeholder="Email *">
+                                    <input type="email" class="form-control" v-model="accompagnatore.email_accompagnatore"
+                                        placeholder="Email *">
                                 </div>
                             </div>
                     </form>
@@ -90,20 +94,23 @@
                     cellulare: '{{ $cellulare }}',
                     codice_fiscale: '',
                     num_accompagnatori: 0,
-                    accompagnatori: []                   
+                    accompagnatori: []
                 }
             },
             watch: {
                 'num_accompagnatori': function(newVal) {
-                    if (newVal > 0) {
+                    if (newVal >= 0) {
+                        
+                        this.accompagnatori = [];
 
-                        for (i = 1; i <= newVal; i++) {
+                        
+                        for (let i = 0; i < newVal; i++) {
                             this.accompagnatori.push({
                                 nome_accompagnatore: '',
                                 cognome_accompagnatore: '',
                                 cf_accompagnatore: '',
                                 email_accompagnatore: '',
-                            })
+                            });
                         }
                     }
                 }
