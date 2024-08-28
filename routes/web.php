@@ -44,5 +44,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/eventi/{id}', [EventController::class, 'destroy'])->name('event.delete');
 
     Route::get('/iscrizioni/create/{id}', [SubscriptionController::class, 'create'])->name('subscriptions.create');
-    Route::post('/iscrizioni/store/{id}', [SubscriptionController::class, 'store'])->name('subscriptions.store');
+    Route::post('/iscrizioni/store', [SubscriptionController::class, 'store'])->name('subscriptions.store');
 });
