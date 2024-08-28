@@ -22,6 +22,13 @@ class SubscriptionRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'nome' => [
+                'required',
+                'string',
+                'max:255',
+                'regex:/^[^\s][A-Za-zÀ-ÿ\s]*[^\s]$/',
+                'regex:/^(?!.*[0-9!@#\$%\^&\*\(\)_\+={}\[\]\|\\:;\"\'<>,\.\?\/~`]).*$/'
+            ]
         ];
     }
 }
